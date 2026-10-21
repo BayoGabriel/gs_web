@@ -1,0 +1,76 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-forest);
+  color: var(--color-surface);
+}
+
+/* Subtle woven-grid texture inspired by market grids and trade routes. */
+.weave {
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.weave-dark {
+  background-image:
+    linear-gradient(rgb(255 253 248 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 253 248 / 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Connector draw-in for the catalogue fork diagram. */
+@keyframes branch-draw {
+  from {
+    stroke-dashoffset: var(--branch-length, 160);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .branch-path {
+    stroke-dasharray: var(--branch-length, 160);
+    animation: branch-draw 0.9s var(--ease-out-soft) both;
+  }
+
+  .branch-path-delay {
+    animation-delay: 0.35s;
+  }
+
+  .fade-rise {
+    animation: fade-rise 0.6s var(--ease-out-soft) both;
+  }
+}

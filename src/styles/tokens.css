@@ -1,0 +1,22 @@
+@theme {
+  /* Brand palette — see docs/design.md */
+  --color-ink: #17221d;
+  --color-forest: #174c3c;
+  --color-forest-deep: #10382d;
+  --color-paper: #f7f4ec;
+  --color-surface: #fffdf8;
+  --color-clay: #c96f4a;
+  --color-clay-deep: #a34e2e;
+  --color-ochre: #d5a84b;
+  --color-muted: #66736b;
+  --color-border: #dddcd1;
+  --color-pale: #e4ebe2;
+
+  /* Typography */
+  --font-sans:
+    'Manrope Variable', 'Manrope', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
