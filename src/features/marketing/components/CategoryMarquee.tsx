@@ -10,10 +10,10 @@ export function CategoryMarquee() {
       <Marquee className="mt-6">
         {categories.map((category) => (
           <span
-            key={category}
+            key={category.label}
             className="rounded-full border border-border-strong px-5 py-2 text-sm font-semibold"
           >
-            {category}
+            {category.label}
           </span>
         ))}
       </Marquee>

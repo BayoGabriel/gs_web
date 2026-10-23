@@ -43,9 +43,12 @@ export default function SellersPage() {
       </Section>
       <Section tone="surface">
         <SectionHeading title="Choose what to sell." description="Browse public catalogues across every category and fork the ones your customers want." />
-        <ul className="mt-10 flex flex-wrap gap-3">
-          {categories.map((category) => (
-            <li key={category} className="rounded-full border border-border-strong px-5 py-2 text-sm font-semibold">{category}</li>
+        <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          {categories.filter((c) => c.image).map((category) => (
+            <li key={category.label}>
+              <Photo slot={category.image!} className="w-full" />
+              <p className="mt-2.5 text-sm font-semibold">{category.label}</p>
+            </li>
           ))}
         </ul>
       </Section>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router'
 import { Section } from '../../../components/layout/Section'
+import { WordReveal } from '../../../components/ui/WordReveal'
 import { buttonClasses } from '../../../components/ui/buttonClasses'
 import { closingCta } from '../../../content/home'
 import { primaryCta, secondaryCta } from '../../../content/nav'
@@ -12,8 +13,12 @@ export function ClosingCta() {
     <Section tone="inverted">
       <div className="max-w-3xl">
         <h2 className="display-lg">
-          <strong>{closingCta.headlineBold}</strong>{' '}
-          <span className="light">{closingCta.headlineLight}</span>
+          <strong>
+            <WordReveal text={closingCta.headlineBold} />
+          </strong>{' '}
+          <span className="light">
+            <WordReveal text={closingCta.headlineLight} delay={240} underline />
+          </span>
         </h2>
         <p className="body-lg measure mt-6 text-on-primary/75">{closingCta.sub}</p>
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">

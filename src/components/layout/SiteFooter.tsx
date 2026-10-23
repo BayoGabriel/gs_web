@@ -57,10 +57,12 @@ export function SiteFooter() {
                 </ul>
               </nav>
             ))}
-            <NewsletterForm />
           </div>
         </div>
-        <p className="mt-14 border-t border-border pt-6 text-sm text-subtle">
+        <div className="mt-14 border-t border-border pt-8">
+          <NewsletterForm className="w-full sm:max-w-md" />
+        </div>
+        <p className="mt-10 pt-6 text-sm text-subtle">
           © {year} GitShop
         </p>
       </div>

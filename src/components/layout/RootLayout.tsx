@@ -10,7 +10,7 @@ function ScrollAndFocusManager() {
   useEffect(() => {
     window.scrollTo(0, 0)
     document.querySelector('h1')?.setAttribute('tabindex', '-1')
-    document.querySelector('h1')?.focus({ preventScroll: true })
+    document.querySelector('h1')?.focus({ preventScroll: true, focusVisible: false })
   }, [pathname])
   return null
 }

@@ -54,3 +54,68 @@ video {
   content-visibility: auto;
   contain-intrinsic-size: auto 640px;
 }
+
+/* Word reveal: words clip-rise one at a time; optional underline wipe after. */
+.wr-clip {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+.wr-word {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+  transition:
+    transform var(--dur-slower) var(--ease-decelerate),
+    opacity var(--dur-slow) var(--ease-decelerate);
+  transition-delay: var(--wr-delay, 0ms);
+  will-change: transform;
+}
+.wr-in .wr-word {
+  transform: none;
+  opacity: 1;
+}
+.wr-underline {
+  position: relative;
+  display: inline-block;
+}
+.wr-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.04em;
+  height: max(2px, 0.045em);
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-slower) var(--ease-decelerate) var(--wr-line-delay, 600ms);
+}
+.wr-in.wr-underline::after {
+  transform: scaleX(1);
+}
+
+/* Scroll-in reveal for blocks. */
+.iv {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--dur-slower) var(--ease-decelerate),
+    transform var(--dur-slower) var(--ease-decelerate);
+}
+.iv-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wr-word,
+  .wr-underline::after,
+  .iv {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+}

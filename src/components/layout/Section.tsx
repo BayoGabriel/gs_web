@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { InView } from '../ui/InView'
 import { cn } from '../../lib/cn'
 
 type SectionProps = {
@@ -21,7 +22,7 @@ export function Section({ id, tone = 'page', children, className }: SectionProps
       className={cn('cv-auto py-14 sm:py-20 lg:py-24', tones[tone], className)}
     >
       <div className="mx-auto w-full max-w-[var(--container)] px-4 sm:px-6 lg:px-8">
-        {children}
+        <InView>{children}</InView>
       </div>
     </section>
   )

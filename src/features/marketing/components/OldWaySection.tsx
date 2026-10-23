@@ -1,4 +1,5 @@
 import { Section } from '../../../components/layout/Section'
+import { WordReveal } from '../../../components/ui/WordReveal'
 import { oldWay } from '../../../content/home'
 
 export function OldWaySection() {
@@ -21,7 +22,7 @@ export function OldWaySection() {
         ))}
       </ul>
       <p className="mt-14 font-display text-3xl font-bold tracking-tight sm:text-4xl">
-        {oldWay.turnLine}
+        <WordReveal text={oldWay.turnLine} stagger={140} underline />
       </p>
     </Section>
   )

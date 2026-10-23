@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { buttonClasses } from './buttonClasses'
 
 /** Footer newsletter field — honest when no endpoint is configured. */
-export function NewsletterForm() {
+export function NewsletterForm({ className }: { className?: string }) {
   const [state, setState] = useState<'idle' | 'done' | 'invalid'>('idle')
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -12,7 +12,7 @@ export function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate>
+    <form onSubmit={onSubmit} noValidate className={className}>
       <label htmlFor="newsletter-email" className="caption block text-subtle">
         Updates, occasionally
       </label>
@@ -24,9 +24,9 @@ export function NewsletterForm() {
           inputMode="email"
           autoComplete="email"
           placeholder="you@example.com"
-          className="h-[var(--control-sm)] w-full rounded-sm border border-border-strong bg-raised px-3 text-sm text-text placeholder:text-subtle focus:border-2 focus:border-text"
+          className="h-[var(--control-md)] min-w-0 flex-1 rounded-sm border border-border-strong bg-raised px-3.5 text-sm text-text placeholder:text-subtle focus:border-2 focus:border-text"
         />
-        <button type="submit" className={buttonClasses({ size: 'sm' })}>
+        <button type="submit" className={buttonClasses({ size: 'md', className: 'shrink-0' })}>
           Subscribe
         </button>
       </div>

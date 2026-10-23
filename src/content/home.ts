@@ -10,9 +10,16 @@ export const hero = {
   ],
 }
 
-export const categories = [
-  'Fashion', 'Beauty', 'Electronics', 'Home', 'Food and drink',
-  'Accessories', 'Sports', 'Kids', 'Stationery',
+export const categories: { label: string; image?: string }[] = [
+  { label: 'Fashion', image: 'category-fashion' },
+  { label: 'Beauty', image: 'category-beauty' },
+  { label: 'Electronics', image: 'category-electronics' },
+  { label: 'Home', image: 'category-home' },
+  { label: 'Food and drink', image: 'category-food' },
+  { label: 'Accessories', image: 'category-accessories' },
+  { label: 'Sports' },
+  { label: 'Kids' },
+  { label: 'Stationery' },
 ]
 
 export const oldWay = {

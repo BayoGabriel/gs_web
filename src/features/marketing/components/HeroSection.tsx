@@ -1,6 +1,7 @@
 import { Check, GitFork, Wallet } from 'lucide-react'
 import { Link } from 'react-router'
 import { PhotoStack } from '../../../components/ui/PhotoStack'
+import { WordReveal } from '../../../components/ui/WordReveal'
 import { buttonClasses } from '../../../components/ui/buttonClasses'
 import { hero } from '../../../content/home'
 import { primaryCta, secondaryCta } from '../../../content/nav'
@@ -13,8 +14,12 @@ export function HeroSection() {
       <div className="mx-auto grid w-full max-w-[var(--container)] items-center gap-12 px-4 py-16 sm:px-6 lg:min-h-[90svh] lg:grid-cols-2 lg:gap-8 lg:px-8 lg:py-0">
         <div>
           <h1 className="display-xl max-w-[11ch]">
-            <strong>{hero.headlineBold}</strong>{' '}
-            <span className="light">{hero.headlineLight}</span>
+            <strong>
+              <WordReveal text={hero.headlineBold} delay={150} />
+            </strong>{' '}
+            <span className="light">
+              <WordReveal text={hero.headlineLight} delay={420} underline />
+            </span>
           </h1>
           <p className="body-lg measure mt-6 text-muted">{hero.sub}</p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
