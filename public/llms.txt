@@ -1,0 +1,47 @@
+# GitShop
+
+> GitShop is the distribution layer for commerce — "GitHub for wholesale".
+> A wholesaler or brand publishes a managed product catalogue (a repo).
+> Sellers fork that catalogue, set their own prices, and publish branded
+> storefronts. Customers buy through the seller's storefront. GitShop
+> collects payment, splits it automatically, credits wallets, pays out,
+> and routes the paid order to the supplier for fulfilment.
+
+## Key facts
+
+- Model: supplier publishes a catalogue repo → sellers fork it → sellers
+  set prices → storefronts go live → GitShop runs orders, payments and
+  payouts.
+- Sellers never hold stock; wholesalers never manage sellers one by one.
+- Customer-facing storefronts show only the seller's brand — the supply
+  chain is invisible to shoppers.
+- Products: repo management, forking and pricing, storefronts, wallet
+  and payments, order routing.
+- Features marked "Soon" on the site are proposed, not yet shipped.
+- Domain: https://gitshop.co
+
+## Pages
+
+- / — Overview: the model, how it works, pricing preview, FAQ
+- /product — Product hub
+- /product/repo-management — Publishing and managing catalogue repos
+- /product/forking — Forking catalogues and setting prices
+- /product/storefronts — Seller-branded storefronts
+- /product/wallet — Wallets, splits and payouts
+- /product/order-routing — Paid orders routed to suppliers
+- /sellers — For sellers (market traders, creators, shops)
+- /resellers — Legacy redirect to /sellers
+- /wholesalers — For wholesalers and brands
+- /use-cases — Audience use cases
+- /pricing — Pricing overview
+- /security — Security and payments posture
+- /blog — Articles
+- /guides — Guides
+- /docs — Documentation
+- /help — Help centre
+- /about — About GitShop
+- /contact — Contact
+- /signup — Create an account (seller or wholesaler)
+- /privacy — Privacy policy
+- /terms — Terms of service
+- /accessibility — Accessibility statement

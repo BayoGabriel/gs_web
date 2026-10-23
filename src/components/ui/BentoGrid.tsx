@@ -25,6 +25,9 @@ export function BentoTile({ title, body, soon, span = 1, className, children }: 
     <div
       className={cn(
         'flex flex-col rounded-xl border border-border bg-raised p-6',
+        'transition-[transform,border-color] duration-base ease-standard',
+        'hover:-translate-y-1 hover:border-border-strong',
+        'motion-reduce:hover:translate-y-0',
         span === 2 && 'lg:col-span-2',
         className,
       )}

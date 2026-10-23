@@ -35,8 +35,8 @@ export default function AccessibilityPage() {
           </p>
           <p>
             Found a barrier? Email{' '}
-            <a className="underline" href="mailto:hello@gitshop.app">
-              hello@gitshop.app
+            <a className="underline" href="mailto:hello@gitshop.co">
+              hello@gitshop.co
             </a>{' '}
             with "Accessibility" in the subject and we will fix it.
           </p>

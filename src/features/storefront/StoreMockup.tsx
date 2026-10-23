@@ -17,7 +17,7 @@ export function StoreMockup() {
         </span>
         <div>
           <p className="font-semibold leading-tight">Amara Market</p>
-          <p className="font-mono text-[10px] leading-tight text-subtle">amara.gitshop.app</p>
+          <p className="font-mono text-[10px] leading-tight text-subtle">amara.gitshop.co</p>
         </div>
       </div>
       <ul className="grid grid-cols-2 gap-3 p-4">

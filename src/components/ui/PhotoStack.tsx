@@ -20,14 +20,17 @@ export function PhotoStack({ slots, className, priority }: PhotoStackProps) {
       {slots.slice(0, count).map((slot, index) => (
         <div
           key={slot}
-          className={index === 0 ? 'relative' : 'absolute'}
-          style={{
-            left: `calc(var(--stack-step-lg) * ${index} * 2)`,
-            top: `calc(var(--stack-step-lg) * ${index} * 2)`,
-            width: `calc(100% - var(--stack-step-lg) * ${index} * 2)`,
-            boxShadow: '0 0 0 var(--stack-gap) var(--bg)',
-            borderRadius: 'var(--radius-xl)',
-          }}
+          className={cn('ps-layer', index === 0 ? 'relative' : 'absolute')}
+          style={
+            {
+              '--ps-i': index,
+              left: `calc(var(--stack-step-lg) * ${index} * 2)`,
+              top: `calc(var(--stack-step-lg) * ${index} * 2)`,
+              width: `calc(100% - var(--stack-step-lg) * ${index} * 2)`,
+              boxShadow: '0 0 0 var(--stack-gap) var(--bg)',
+              borderRadius: 'var(--radius-xl)',
+            } as React.CSSProperties
+          }
         >
           <Photo slot={slot} priority={priority && index === 0} />
         </div>

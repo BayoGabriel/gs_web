@@ -23,19 +23,27 @@ export function WordReveal({ text, className, stagger = 90, delay = 0, underline
       className={cn('wr-root', inView && 'wr-in', underline && 'wr-underline', className)}
       style={{ '--wr-line-delay': `${delay + words.length * stagger + 240}ms` } as React.CSSProperties}
     >
-      {words.map((word, i) => (
-        <span key={`${word}-${i}`}>
-          <span className="wr-clip">
-            <span
-              className="wr-word"
-              style={{ '--wr-delay': `${delay + i * stagger}ms` } as React.CSSProperties}
-            >
-              {word}
+      {words.map((word, i) => {
+        const dotted = word.endsWith('.')
+        return (
+          <span key={`${word}-${i}`}>
+            <span className="wr-clip">
+              <span
+                className="wr-word"
+                style={{ '--wr-delay': `${delay + i * stagger}ms` } as React.CSSProperties}
+              >
+                {dotted ? word.slice(0, -1) : word}
+                {dotted ? (
+                  <span className="wr-dot" aria-hidden="true">
+                    .
+                  </span>
+                ) : null}
+              </span>
             </span>
+            {i < words.length - 1 ? ' ' : null}
           </span>
-          {i < words.length - 1 ? ' ' : null}
-        </span>
-      ))}
+        )
+      })}
     </span>
   )
 }

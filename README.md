@@ -25,7 +25,7 @@ Optional environment (see `.env.example`):
 | --- | --- |
 | `VITE_API_BASE_URL` | Backend origin for sign in / sign up (`POST /api/v1/login`, `POST /api/v1/create-account`). Forms degrade honestly when unset. |
 | `VITE_CONTACT_API_URL` | Contact form endpoint (`POST {name,email,topic,message}`). |
-| `VITE_SITE_URL` | Canonical origin for canonical/OG URLs (default `https://gitshop.app`). |
+| `VITE_SITE_URL` | Canonical origin for canonical/OG URLs (default `https://gitshop.co`). |
 
 ## Design system
 

@@ -42,7 +42,7 @@ export function OverlaysDemo() {
             title="Share storefront"
             trigger={<Button variant="secondary">Open sheet</Button>}
           >
-            <p className="text-sm text-muted">yourname.gitshop.app</p>
+            <p className="text-sm text-muted">yourname.gitshop.co</p>
           </Modal>
         </KitRow>
       </KitBlock>

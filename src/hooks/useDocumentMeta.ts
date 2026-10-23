@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router'
 
 const SITE_URL = (
-  (import.meta.env.VITE_SITE_URL as string | undefined) ?? 'https://gitshop.app'
+  (import.meta.env.VITE_SITE_URL as string | undefined) ?? 'https://gitshop.co'
 ).replace(/\/$/, '')
 
 function upsertMeta(selector: string, attrs: Record<string, string>) {

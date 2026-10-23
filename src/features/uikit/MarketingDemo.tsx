@@ -38,10 +38,10 @@ export function MarketingDemo() {
       </KitBlock>
       <KitBlock id="mockups" title="Mockups in device frames">
         <div className="grid items-start gap-8 lg:grid-cols-2">
-          <DeviceFrame url="amara.gitshop.app"><StoreMockup /></DeviceFrame>
+          <DeviceFrame url="amara.gitshop.co"><StoreMockup /></DeviceFrame>
           <DeviceFrame kind="phone" className="mx-auto w-full max-w-xs"><OrderTrackingMockup /></DeviceFrame>
         </div>
-        <DeviceFrame url="app.gitshop.app/repos"><RepoMockup /></DeviceFrame>
+        <DeviceFrame url="app.gitshop.co/repos"><RepoMockup /></DeviceFrame>
       </KitBlock>
       <KitBlock id="newsletter" title="Newsletter form">
         <NewsletterForm />

@@ -1,10 +1,16 @@
-import * as SwitchPrimitive from '@radix-ui/react-switch'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from '../../hooks/useTheme'
+import { cn } from '../../lib/cn'
+import { Tooltip } from './Tooltip'
+
+const options = [
+  { value: 'light' as const, Icon: Sun, label: 'Light theme' },
+  { value: 'dark' as const, Icon: Moon, label: 'Dark theme' },
+]
 
 /**
- * Light/dark switch. The site defaults to the system theme; the switch
- * flips it to an explicit choice (there is no visible "system" option).
+ * Segmented light/dark pill with a sliding thumb. The site defaults to the
+ * system theme; choosing a side stores an explicit preference.
  */
 export function ThemeToggle({ className }: { className?: string }) {
   const { resolved, setMode } = useTheme()
@@ -12,20 +18,42 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   return (
     <div
-      className={
-        'flex h-[var(--control-md)] items-center gap-2 text-muted ' + (className ?? '')
-      }
+      role="radiogroup"
+      aria-label="Theme"
+      className={cn(
+        'relative inline-flex rounded-full border border-border bg-surface p-1',
+        className,
+      )}
     >
-      <Sun className="h-4 w-4" aria-hidden="true" />
-      <SwitchPrimitive.Root
-        checked={dark}
-        onCheckedChange={(checked) => setMode(checked ? 'dark' : 'light')}
-        aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
-        className="relative h-6 w-11 shrink-0 rounded-full border border-border-strong bg-surface transition-colors duration-fast data-[state=checked]:border-primary data-[state=checked]:bg-primary"
-      >
-        <SwitchPrimitive.Thumb className="block h-4 w-4 translate-x-1 rounded-full bg-text transition-transform duration-base data-[state=checked]:translate-x-6 data-[state=checked]:bg-on-primary" />
-      </SwitchPrimitive.Root>
-      <Moon className="h-4 w-4" aria-hidden="true" />
+      <span
+        aria-hidden="true"
+        className={cn(
+          'absolute inset-y-1 left-1 w-9 rounded-full border border-border-strong bg-raised',
+          'transition-transform duration-base ease-decelerate',
+          dark && 'translate-x-9',
+        )}
+      />
+      {options.map(({ value, Icon, label }) => {
+        const active = (value === 'dark') === dark
+        return (
+          <Tooltip key={value} content={label}>
+            <button
+              type="button"
+              role="radio"
+              aria-checked={active}
+              aria-label={label}
+              onClick={() => setMode(value)}
+              className={cn(
+                'relative z-10 flex h-8 w-9 items-center justify-center rounded-full',
+                'transition-colors duration-fast',
+                active ? 'text-text' : 'text-subtle hover:text-muted',
+              )}
+            >
+              <Icon className="h-4 w-4" aria-hidden="true" />
+            </button>
+          </Tooltip>
+        )
+      })}
     </div>
   )
 }

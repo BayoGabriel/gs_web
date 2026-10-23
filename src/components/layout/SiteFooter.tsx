@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { footerGroups, tagline } from '../../content/nav'
 import { Logo } from '../brand/Logo'
 import { NewsletterForm } from '../ui/NewsletterForm'
+import { Tooltip } from '../ui/Tooltip'
 import { ThemeToggle } from '../ui/ThemeToggle'
 
 const socials = [
@@ -29,15 +30,16 @@ export function SiteFooter() {
             </p>
             <div className="mt-5 flex gap-1" data-placeholder>
               {socials.map(({ id, label, Icon }) => (
-                <a
-                  key={id}
-                  href="#social-placeholder"
-                  aria-label={`${label} (placeholder link)`}
-                  onClick={(e) => e.preventDefault()}
-                  className="flex h-[var(--control-sm)] w-[var(--control-sm)] items-center justify-center rounded-sm text-muted hover:bg-hover-surface hover:text-text"
-                >
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                </a>
+                <Tooltip key={id} content={`${label} — coming soon`}>
+                  <a
+                    href="#social-placeholder"
+                    aria-label={`${label} (placeholder link)`}
+                    onClick={(e) => e.preventDefault()}
+                    className="flex h-[var(--control-sm)] w-[var(--control-sm)] items-center justify-center rounded-sm text-muted hover:bg-hover-surface hover:text-text"
+                  >
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                </Tooltip>
               ))}
             </div>
             <ThemeToggle className="mt-5" />

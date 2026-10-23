@@ -70,7 +70,7 @@ export function ContactForm() {
         {status === 'unconfigured' && (
           <p className="text-sm text-muted">
             Contact email is not connected yet. Write to{' '}
-            <a className="underline" href="mailto:hello@gitshop.app">hello@gitshop.app</a>{' '}
+            <a className="underline" href="mailto:hello@gitshop.co">hello@gitshop.co</a>{' '}
             instead.
           </p>
         )}

@@ -38,7 +38,9 @@ export function DetailSection({
     </div>
   )
   const visual = image ? (
-    <Photo slot={image} className="mx-auto max-w-md" />
+    <div className="stack stack-alive mx-auto max-w-md">
+      <Photo slot={image} />
+    </div>
   ) : (
     media
   )

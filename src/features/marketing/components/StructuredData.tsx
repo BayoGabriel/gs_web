@@ -4,9 +4,17 @@ const organization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'GitShop',
-  url: 'https://gitshop.app',
+  url: 'https://gitshop.co',
+  logo: 'https://gitshop.co/og-image-light.png',
   description:
     'The distribution layer for commerce. Wholesalers publish repos; sellers fork them into storefronts; GitShop handles orders, payments and payouts.',
+}
+
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'GitShop',
+  url: 'https://gitshop.co',
 }
 
 const faqPage = {
@@ -24,6 +32,7 @@ export function StructuredData() {
   return (
     <>
       <script type="application/ld+json">{JSON.stringify(organization)}</script>
+      <script type="application/ld+json">{JSON.stringify(website)}</script>
       <script type="application/ld+json">{JSON.stringify(faqPage)}</script>
     </>
   )

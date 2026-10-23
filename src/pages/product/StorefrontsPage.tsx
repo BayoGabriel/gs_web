@@ -21,7 +21,7 @@ export default function StorefrontsPage() {
       />
       <section className="bg-bg pb-14 sm:pb-20">
         <div className="mx-auto grid w-full max-w-[var(--container)] items-start gap-8 px-4 sm:px-6 lg:grid-cols-[3fr_2fr] lg:px-8">
-          <DeviceFrame url="amara.gitshop.app"><StoreMockup /></DeviceFrame>
+          <DeviceFrame url="amara.gitshop.co"><StoreMockup /></DeviceFrame>
           <DeviceFrame kind="phone" className="mx-auto w-full max-w-xs"><OrderTrackingMockup /></DeviceFrame>
         </div>
       </section>
@@ -39,7 +39,7 @@ export default function StorefrontsPage() {
         </div>
       } />
       <PageFaq items={[
-        { id: 'link', q: 'What does my store link look like?', a: 'A short link on GitShop, like yourname.gitshop.app. Share it anywhere.' },
+        { id: 'link', q: 'What does my store link look like?', a: 'A short link on GitShop, like yourname.gitshop.co. Share it anywhere.' },
         { id: 'brand', q: 'Is it really my brand?', a: 'Yes. Customers shop and check out under your name, logo and policies.' },
         { id: 'custom', q: 'Can I use my own domain?', a: 'Custom domains are not available yet. Your GitShop link works everywhere today.' },
       ]} />

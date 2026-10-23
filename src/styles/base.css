@@ -118,6 +118,97 @@ html[data-theme='dark'] img.photo-edit {
   transform: scaleX(1);
 }
 
+/* The period: sits quiet, occasionally tips over and rights itself. */
+.wr-dot {
+  display: inline-block;
+  line-height: 1;
+  transform-origin: 100% 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .wr-in .wr-dot {
+    animation: dot-tumble 9s var(--ease-decelerate) infinite;
+    animation-delay: calc(var(--wr-delay, 0ms) + 1.6s);
+  }
+}
+@keyframes dot-tumble {
+  0%,
+  86% {
+    transform: rotate(0deg);
+  }
+  91% {
+    transform: rotate(90deg);
+  }
+  96%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Living stacks: the knock-out layers breathe and drift like the preloader. */
+@keyframes stack-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(
+      calc(var(--stack-drift, 4px) * -1),
+      calc(var(--stack-drift, 4px) * -1)
+    );
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ps-layer {
+    animation: stack-drift 7s var(--ease-standard) infinite;
+    animation-delay: calc(var(--ps-i, 0) * 600ms);
+    will-change: transform;
+  }
+  .stack-alive::before,
+  .stack-alive::after {
+    animation:
+      stack-drift 8s var(--ease-standard) infinite,
+      stack-tint 8s var(--ease-standard) infinite;
+  }
+  .stack-alive::after {
+    animation-delay: 500ms, 500ms;
+  }
+}
+/* The shadow layers slowly breathe through the grey ramp — subtle shimmer. */
+@keyframes stack-tint {
+  0%,
+  100% {
+    background: var(--inverse-bg);
+  }
+  50% {
+    background: var(--gs-gray-500);
+  }
+}
+
+/* Flip cards: front/back faces, 3D turn on hover or click. */
+.flip-card {
+  perspective: 900px;
+}
+.flip-inner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform var(--dur-slower) var(--ease-decelerate);
+}
+.flip-card:hover .flip-inner,
+.flip-card[data-flipped='true'] .flip-inner,
+.flip-card:focus-visible .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+.flip-back {
+  transform: rotateY(180deg);
+}
+
 /* Scroll-in reveal for blocks. */
 .iv {
   opacity: 0;

@@ -75,7 +75,7 @@ Stepper shows "Step n of 4", saves a draft after every step, and every step can 
 1. **Browse** repos, open detail, read rules. Button: **Fork repo**.
 2. **Fork confirmation** modal: shows what you get, what the wholesaler controls (stock, base price), what you control (markup, storefront). Confirm.
 3. **Set markup**: global default (amount or percent), per-product overrides, live preview of selling price and your earnings per sale. Validation against min/max.
-4. **Publish storefront**: name, slug (`gitshop.app/your-name`), logo. Preview. "Publish".
+4. **Publish storefront**: name, slug (`gitshop.co/your-name`), logo. Preview. "Publish".
 5. **Share**: copy link, QR code, share sheet.
 
 Forks stay in sync with the source: new products and price changes from the wholesaler show a "Sync available" banner with a changelog (the git-style diff view: added, changed, removed rows).

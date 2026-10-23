@@ -20,7 +20,7 @@ export function StorefrontsSection() {
         description={storefront.body}
       />
       <div className="mt-14 grid items-start gap-8 lg:grid-cols-[3fr_2fr]">
-        <DeviceFrame url="amara.gitshop.app">
+        <DeviceFrame url="amara.gitshop.co">
           <StoreMockup />
         </DeviceFrame>
         <DeviceFrame kind="phone" className="mx-auto w-full max-w-xs">

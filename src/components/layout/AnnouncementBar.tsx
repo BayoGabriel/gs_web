@@ -1,5 +1,6 @@
 import { X } from 'lucide-react'
 import { useState } from 'react'
+import { Tooltip } from '../ui/Tooltip'
 import { announcement } from '../../content/placeholders'
 
 const KEY = 'gitshop-announcement-dismissed'
@@ -22,21 +23,23 @@ export function AnnouncementBar() {
       data-placeholder={announcement.placeholder || undefined}
     >
       <p>{announcement.text}</p>
-      <button
-        type="button"
-        aria-label="Dismiss announcement"
-        onClick={() => {
-          setDismissed(true)
-          try {
-            localStorage.setItem(KEY, '1')
-          } catch {
-            /* storage unavailable */
-          }
-        }}
-        className="rounded-sm p-1 text-on-primary/80 hover:text-on-primary"
-      >
-        <X className="h-3.5 w-3.5" aria-hidden="true" />
-      </button>
+      <Tooltip content="Dismiss">
+        <button
+          type="button"
+          aria-label="Dismiss announcement"
+          onClick={() => {
+            setDismissed(true)
+            try {
+              localStorage.setItem(KEY, '1')
+            } catch {
+              /* storage unavailable */
+            }
+          }}
+          className="rounded-sm p-1 text-on-primary/80 hover:text-on-primary"
+        >
+          <X className="h-3.5 w-3.5" aria-hidden="true" />
+        </button>
+      </Tooltip>
     </div>
   )
 }

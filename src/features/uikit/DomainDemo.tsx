@@ -27,7 +27,7 @@ export function DomainDemo() {
           <div>
             <WalletCard balance={48250} pending={12000} todayDelta={1200} />
             <ul className="mt-4 rounded-xl border border-border bg-raised px-4">
-              <TransactionRow tx={{ id: 't1', type: 'markup', title: 'Markup earned', counterparty: 'amara.gitshop.app', reference: 'TXN-8f41', timestamp: '14:32', status: 'completed', amount: 1200 }} />
+              <TransactionRow tx={{ id: 't1', type: 'markup', title: 'Markup earned', counterparty: 'amara.gitshop.co', reference: 'TXN-8f41', timestamp: '14:32', status: 'completed', amount: 1200 }} />
               <TransactionRow tx={{ id: 't2', type: 'payout', title: 'Payout', counterparty: 'Bank ••••4821', reference: 'PO-1139', timestamp: 'Yesterday', status: 'pending', amount: -15000 }} />
             </ul>
           </div>

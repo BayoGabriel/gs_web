@@ -27,7 +27,7 @@ export default function PrivacyPage() {
             </div>
           ))}
           <p className="caption text-subtle">
-            Questions: <a className="underline" href="mailto:hello@gitshop.app">hello@gitshop.app</a>
+            Questions: <a className="underline" href="mailto:hello@gitshop.co">hello@gitshop.co</a>
           </p>
         </div>
       </Section>
