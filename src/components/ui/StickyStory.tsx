@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '../../lib/cn'
-import { Photo } from './Photo'
+import { StepArt } from './StepArt'
 import { Tooltip } from './Tooltip'
 
 export type StoryStep = {
@@ -50,7 +50,7 @@ export function StickyStory({ steps }: { steps: StoryStep[] }) {
                   }
                   aria-label={`${label}: ${step?.title ?? ''}. Activate to flip the card.`}
                   className={cn(
-                    'flip-card absolute h-32 w-52 text-left transition-all duration-slow ease-standard',
+                    'flip-card absolute h-32 w-52 text-left transition-[transform,opacity] duration-slow ease-standard',
                     'hover:z-20 focus-visible:z-20 data-[flipped]:z-20',
                     i <= active ? 'opacity-100' : 'translate-y-4 opacity-0',
                   )}
@@ -93,7 +93,7 @@ export function StickyStory({ steps }: { steps: StoryStep[] }) {
       <ol ref={listRef} className="space-y-16 lg:space-y-40 lg:py-24">
         {steps.map((step, i) => (
           <li key={step.index} data-step={i} className="max-w-md">
-            <Photo slot={step.image} />
+            <StepArt step={i + 1} />
             <p className="mt-6 font-mono text-sm text-subtle">{step.index}</p>
             <h3 className="h3 mt-2">{step.title}</h3>
             <p className="measure mt-3 leading-relaxed text-muted">{step.body}</p>

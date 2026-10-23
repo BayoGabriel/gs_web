@@ -1,11 +1,10 @@
 import { Link } from 'react-router'
 import { Section, SectionHeading } from '../../../components/layout/Section'
 import { BentoGrid, BentoTile } from '../../../components/ui/BentoGrid'
-import { DeviceFrame } from '../../../components/ui/DeviceFrame'
 import { repoSpotlight } from '../../../content/home'
-import { RepoMockup } from './RepoMockup'
+import { RepoShowcase } from './RepoShowcase'
 
-/** Flagship home section: repo management, hero-scale bento + repo mockup. */
+/** Flagship home section: repo management, hero-scale bento + interactive demo. */
 export function RepoSpotlight() {
   const [lead, ...rest] = repoSpotlight.tiles
   return (
@@ -23,10 +22,8 @@ export function RepoSpotlight() {
       />
       <BentoGrid className="mt-14">
         <BentoTile title={lead.title} body={lead.body} soon={lead.soon} span={2} />
-        <div className="rounded-xl border-2 border-text sm:col-span-2 lg:row-span-3">
-          <DeviceFrame url="app.gitshop.com/repos/sneakers-2026" className="border-0">
-            <RepoMockup />
-          </DeviceFrame>
+        <div className="stack stack-alive sm:col-span-2 lg:row-span-3">
+          <RepoShowcase />
         </div>
         {rest.map((tile) => (
           <BentoTile key={tile.id} title={tile.title} body={tile.body} soon={tile.soon} />

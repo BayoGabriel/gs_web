@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Photo } from '../ui/Photo'
 import { SoonBadge } from '../ui/SoonBadge'
+import { StepArt } from '../ui/StepArt'
 import { Section } from './Section'
 
 type DetailSectionProps = {
@@ -37,9 +38,10 @@ export function DetailSection({
       <p className="body-lg measure mt-5 text-muted">{body}</p>
     </div>
   )
+  const stepMatch = image?.match(/^step-(\d)$/)
   const visual = image ? (
     <div className="stack stack-alive mx-auto max-w-md">
-      <Photo slot={image} />
+      {stepMatch ? <StepArt step={Number(stepMatch[1])} /> : <Photo slot={image} />}
     </div>
   ) : (
     media

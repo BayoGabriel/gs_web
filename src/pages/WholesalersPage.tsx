@@ -5,6 +5,7 @@ import { PageHero } from '../components/layout/PageHero'
 import { Section, SectionHeading } from '../components/layout/Section'
 import { Photo } from '../components/ui/Photo'
 import { SoonBadge } from '../components/ui/SoonBadge'
+import { StepArt } from '../components/ui/StepArt'
 import { buttonClasses } from '../components/ui/buttonClasses'
 import { wholesalersPage } from '../content/solutions'
 import { secondaryCta } from '../content/nav'
@@ -39,7 +40,7 @@ export default function WholesalersPage() {
       </Section>
       <Section tone="surface">
         <div className="grid items-center gap-12 lg:grid-cols-2">
-          <Photo slot="step-1" className="mx-auto max-w-md" />
+          <StepArt step={1} className="mx-auto max-w-md" />
           <SectionHeading
             eyebrow="Repo management"
             title="One catalogue. Every store stays current."

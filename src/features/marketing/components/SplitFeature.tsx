@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import { Section } from '../../../components/layout/Section'
 import { Photo } from '../../../components/ui/Photo'
 import { buttonClasses } from '../../../components/ui/buttonClasses'
+import { cn } from '../../../lib/cn'
 import { forSellers, forWholesalers } from '../../../content/home'
 import { primaryCta, secondaryCta } from '../../../content/nav'
 
@@ -46,7 +47,11 @@ function Audience({ data, cta, inverted, imageFirst }: AudienceBlock) {
       </Link>
     </div>
   )
-  const image = <Photo slot={data.image} className="mx-auto max-w-sm" />
+  const image = (
+    <div className={cn('stack stack-alive mx-auto max-w-sm', inverted && 'stack-inverted')}>
+      <Photo slot={data.image} />
+    </div>
+  )
   return (
     <Section tone={inverted ? 'inverted' : 'surface'}>
       <div className="grid items-center gap-12 lg:grid-cols-2">

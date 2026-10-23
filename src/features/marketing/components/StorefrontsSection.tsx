@@ -1,6 +1,7 @@
 import { Section, SectionHeading } from '../../../components/layout/Section'
 import { DeviceFrame } from '../../../components/ui/DeviceFrame'
 import { FeatureChip } from '../../../components/ui/FeatureChip'
+import { WaveText } from '../../../components/ui/WaveText'
 import { storefront } from '../../../content/home'
 import { OrderTrackingMockup } from '../../storefront/OrderTrackingMockup'
 import { StoreMockup } from '../../storefront/StoreMockup'
@@ -14,7 +15,9 @@ export function StorefrontsSection() {
         title={
           <>
             <span className="light">{storefront.headlineLight}</span>{' '}
-            <strong>{storefront.headlineBold}</strong>
+            <strong>
+              <WaveText text={storefront.headlineBold} />
+            </strong>
           </>
         }
         description={storefront.body}
