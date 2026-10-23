@@ -2,12 +2,13 @@
 
 export function formatMoney(
   minorUnits: number,
-  currency = 'USD',
+  currency = 'NGN',
   locale?: string,
 ): string {
-  return new Intl.NumberFormat(locale ?? navigator.language, {
+  return new Intl.NumberFormat(locale ?? 'en-NG', {
     style: 'currency',
     currency,
+    currencyDisplay: 'narrowSymbol',
   }).format(minorUnits / 100)
 }
 
@@ -24,7 +25,7 @@ export function parseMoneyInput(input: string): number | null {
 export function formatMarkup(
   type: 'amount' | 'percent',
   minorUnits: number,
-  currency = 'USD',
+  currency = 'NGN',
 ): string {
   return type === 'amount'
     ? formatMoney(minorUnits, currency)

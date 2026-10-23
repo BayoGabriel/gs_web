@@ -67,7 +67,7 @@ Target: **WCAG 2.2 Level AA** for every screen, in light and dark themes. Access
 | Search results count | polite live region ("24 repos found") |
 | Balance update | polite announcement, not on every tick |
 
-Amounts are written for screen readers: "minus $20.00" not "dash 20"; dates in a readable format; icons are `aria-hidden="true"` when text is adjacent, otherwise labelled.
+Amounts are written for screen readers: "minus ₦20,000" not "dash 20"; dates in a readable format; icons are `aria-hidden="true"` when text is adjacent, otherwise labelled.
 
 ## 5b. Component ARIA map
 

@@ -4,13 +4,13 @@ import { exampleFeeBps } from '../../../content/placeholders'
 import { formatMoney, parseMoneyInput } from '../../../lib/format'
 import { cn } from '../../../lib/cn'
 
-const CURRENCY = 'USD'
+const CURRENCY = 'NGN'
 
 /** Seller-side split: supplier price + your margin → customer pays. Integer minor units. */
 export function MarkupCalculator() {
-  const [wholesaleRaw, setWholesaleRaw] = useState('40.00')
+  const [wholesaleRaw, setWholesaleRaw] = useState('45000')
   const [markupType, setMarkupType] = useState<'amount' | 'percent'>('amount')
-  const [markupRaw, setMarkupRaw] = useState('12.00')
+  const [markupRaw, setMarkupRaw] = useState('12000')
 
   const split = useMemo(() => {
     const supplier = parseMoneyInput(wholesaleRaw) ?? 0
@@ -39,7 +39,7 @@ export function MarkupCalculator() {
           value={wholesaleRaw}
           onChange={(e) => setWholesaleRaw(e.target.value)}
           inputMode="decimal"
-          prefix="$"
+          prefix="₦"
         />
         <div>
           <div
@@ -67,7 +67,7 @@ export function MarkupCalculator() {
             value={markupRaw}
             onChange={(e) => setMarkupRaw(e.target.value)}
             inputMode="decimal"
-            prefix={markupType === 'amount' ? '$' : undefined}
+            prefix={markupType === 'amount' ? '₦' : undefined}
             suffix={markupType === 'percent' ? '%' : undefined}
             className="mt-4"
           />

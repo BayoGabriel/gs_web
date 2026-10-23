@@ -11,9 +11,9 @@ import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 const [collections, split, wallet, payouts, history, safeguards] = walletPayments.sections
 
 const exampleTx: Transaction[] = [
-  { id: 't1', type: 'collection', title: 'Collection', counterparty: 'Order #2417', reference: 'COL-8812', timestamp: 'Today', status: 'completed', amount: 5200 },
-  { id: 't2', type: 'fee', title: 'Platform fee', counterparty: 'Order #2417', reference: 'FEE-8812', timestamp: 'Today', status: 'completed', amount: -260 },
-  { id: 't3', type: 'payout', title: 'Payout', counterparty: 'Bank account', reference: 'PO-1139', timestamp: 'Yesterday', status: 'pending', amount: -15000 },
+  { id: 't1', type: 'collection', title: 'Collection', counterparty: 'Order #2417', reference: 'COL-8812', timestamp: 'Today', status: 'completed', amount: 6500000 },
+  { id: 't2', type: 'fee', title: 'Platform fee', counterparty: 'Order #2417', reference: 'FEE-8812', timestamp: 'Today', status: 'completed', amount: -32500 },
+  { id: 't3', type: 'payout', title: 'Payout', counterparty: 'Bank account', reference: 'PO-1139', timestamp: 'Yesterday', status: 'pending', amount: -18500000 },
 ]
 
 export default function WalletPage() {
@@ -29,7 +29,7 @@ export default function WalletPage() {
         <div className="grid items-start gap-10 lg:grid-cols-2">
           <SectionHeading eyebrow={wallet.title} title="Your balance, in the open." description={wallet.body} />
           <div>
-            <WalletCard balance={48250} pending={12000} todayDelta={1200} />
+            <WalletCard balance={48250000} pending={12000000} todayDelta={1200000} />
             <ul className="mt-6 rounded-xl border border-border bg-raised px-4" aria-label="Example transactions">
               {exampleTx.map((tx) => <TransactionRow key={tx.id} tx={tx} />)}
             </ul>
@@ -40,16 +40,16 @@ export default function WalletPage() {
       <DetailSection {...collections} tone="surface" image="step-4" />
       <DetailSection {...split} imageFirst media={
         <ol className="stack max-w-md space-y-4 p-6" aria-label="Payment split example">
-          <li className="flex justify-between text-sm"><span>Customer pays</span><span className="font-mono tabular-nums">$52.00</span></li>
-          <li className="flex justify-between text-sm"><span>Seller earns</span><span className="font-mono tabular-nums">+$12.00</span></li>
-          <li className="flex justify-between text-sm"><span>Supplier receives</span><span className="font-mono tabular-nums">$40.00</span></li>
+          <li className="flex justify-between text-sm"><span>Customer pays</span><span className="font-mono tabular-nums">₦65,000</span></li>
+          <li className="flex justify-between text-sm"><span>Seller earns</span><span className="font-mono tabular-nums">+₦15,500</span></li>
+          <li className="flex justify-between text-sm"><span>Supplier receives</span><span className="font-mono tabular-nums">₦49,500</span></li>
         </ol>
       } />
       <DetailSection {...payouts} tone="surface" media={
         <div className="stack max-w-md p-6">
           <p className="font-semibold">Payout review</p>
           <dl className="mt-4 space-y-2 text-sm">
-            <div className="flex justify-between"><dt className="text-muted">Amount</dt><dd className="font-mono tabular-nums">$150.00</dd></div>
+            <div className="flex justify-between"><dt className="text-muted">Amount</dt><dd className="font-mono tabular-nums">₦185,000</dd></div>
             <div className="flex justify-between"><dt className="text-muted">Destination</dt><dd className="font-mono">Bank ••••4821</dd></div>
             <div className="flex justify-between"><dt className="text-muted">Status</dt><dd>Pending confirmation</dd></div>
           </dl>

@@ -61,7 +61,7 @@ Rules:
 - Destructive or irreversible actions: name the object and the consequence in the button ("Delete 'Leather Sneakers' repo").
 
 **Content and tone**
-- Voice: direct, calm, specific. "Your payout of $1,500.00 is on its way." not "Awesome! Money incoming!"
+- Voice: direct, calm, specific. "Your payout of ₦1,500,000 is on its way." not "Awesome! Money incoming!"
 - Sentence case everywhere except the wordmark and acronyms.
 - Empty states say what the area is for and give one action.
 - Errors say what happened and what to do next. Never blame the user.

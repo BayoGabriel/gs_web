@@ -58,7 +58,7 @@ Anatomy (top to bottom): Label (14/20, 600) > optional hint (12/16 muted) > fiel
 
 - Field: height 44, `--surface-raised` bg, 1px `--border-strong`, radius 12, padding 0 16, text 16 (prevents iOS zoom).
 - Focus: border becomes 2px `--text` plus the focus ring. Error: 2px `--danger` border, error icon, message text below. Disabled: `--disabled-surface`.
-- Prefix/suffix slots for currency (`$`, `USD`), units and icons. Currency inputs: `inputmode="decimal"`, tabular numerals, right-aligned amount.
+- Prefix/suffix slots for currency (₦, NGN), units and icons. Currency inputs: `inputmode="decimal"`, tabular numerals, right-aligned amount.
 - Textarea: min 3 rows, auto-grow to 8.
 - Select: native `<select>` styled to match on mobile; custom listbox on desktop only if search is needed.
 - Character counters appear only when a limit exists.
@@ -90,7 +90,7 @@ Anatomy: Cover image (1:1 or 4:3, radius 16, `--surface` backdrop) > Title (h4) 
 
 Fields: image, name, SKU (mono), wholesale price, your markup (editable on forks), selling price, stock status.
 
-- **Price block**: three lines in a fixed order, each right-aligned and tabular: `Wholesale  $40.00` / `Your markup  + $12.00` / `Selling price  $52.00` (last line 600 weight).
+- **Price block**: three lines in a fixed order, each right-aligned and tabular: `Wholesale  ₦40,000` / `Your markup  + ₦12,000` / `Selling price  ₦52,000` (last line 600 weight).
 - **Markup editor**: segmented control `Amount | Percent`, number input, live selling price preview. Validates min and max set by the wholesaler.
 - Stock: text status ("In stock", "Low stock: 4 left", "Out of stock") with icon; never colour alone.
 
@@ -126,7 +126,7 @@ Sizes 24 / 32 / 40 / 56 / 96. Users = circle; organisations (wholesalers, resell
 
 ## 12. Wallet card
 
-Inverted card, radius 24, padding 24 to 32. Content: label "Wallet balance" (muted-on-black), `amount-xl`, available vs pending split, actions `Request payout` (white button on black) and `Add funds` (outlined white). Never shows colour-coded change; shows "+ $120.00 today" with a plus sign.
+Inverted card, radius 24, padding 24 to 32. Content: label "Wallet balance" (muted-on-black), `amount-xl`, available vs pending split, actions `Request payout` (white button on black) and `Add funds` (outlined white). Never shows colour-coded change; shows "+ ₦120,000 today" with a plus sign.
 
 ## 13. Transaction row
 

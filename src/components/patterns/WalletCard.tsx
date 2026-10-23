@@ -15,7 +15,7 @@ export function WalletCard({
   balance,
   pending,
   todayDelta,
-  currency = 'USD',
+  currency = 'NGN',
   className,
 }: WalletCardProps) {
   const whole = Math.trunc(balance / 100)

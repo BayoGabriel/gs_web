@@ -50,7 +50,7 @@ Animate only `opacity` and `transform`. Do not animate layout properties (width,
 ## 5. Forms and validation
 
 1. **Validate on blur** for formatting (email, amount), **on submit** for everything. Do not show an error while the user is still typing the first time; after the first error, re-validate on change so it clears immediately.
-2. **Error message pattern:** `[icon] What is wrong. How to fix it.` ("Amount is higher than your balance. Enter $1,200.00 or less.")
+2. **Error message pattern:** `[icon] What is wrong. How to fix it.` ("Amount is higher than your balance. Enter ₦1,200,000 or less.")
 3. **Error summary:** on submit with multiple errors, focus a summary at the top (`role="alert"`) listing links to each field. Focus first invalid field.
 4. **Inline help** appears before errors, never replaced by them (error shows below the hint).
 5. **Required fields:** mark optional ones with "(optional)" instead of asterisks.

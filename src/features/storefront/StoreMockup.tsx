@@ -1,10 +1,10 @@
 import { Photo } from '../../components/ui/Photo'
 
 const products = [
-  { id: 'p1', image: 'storefront-1', name: 'Everyday tote', price: '$52.00' },
-  { id: 'p2', image: 'storefront-2', name: 'Court sneakers', price: '$68.00' },
-  { id: 'p3', image: 'product-05', name: 'Glow serum', price: '$24.00' },
-  { id: 'p4', image: 'product-08', name: 'Ceramic mug', price: '$18.00' },
+  { id: 'p1', image: 'storefront-1', name: 'Everyday tote', price: '₦65,000' },
+  { id: 'p2', image: 'storefront-2', name: 'Court sneakers', price: '₦78,500' },
+  { id: 'p3', image: 'product-05', name: 'Glow serum', price: '₦28,500' },
+  { id: 'p4', image: 'product-08', name: 'Ceramic mug', price: '₦12,000' },
 ]
 
 /** Buyer-facing storefront mockup — store branding only, nothing behind it. */

@@ -2,9 +2,9 @@ import { Badge } from '../../../components/ui/Badge'
 import { Photo } from '../../../components/ui/Photo'
 
 const products = [
-  { id: 'SNK-041', image: 'product-01', name: 'Low-top trainer', price: '$40.00', forks: 12 },
-  { id: 'SNK-042', image: 'product-02', name: 'Court runner', price: '$55.00', forks: 8 },
-  { id: 'SNK-043', image: 'product-03', name: 'Slip-on canvas', price: '$32.00', forks: 4 },
+  { id: 'SNK-041', image: 'product-01', name: 'Low-top trainer', price: '₦42,500', forks: 12 },
+  { id: 'SNK-042', image: 'product-02', name: 'Court runner', price: '₦58,000', forks: 8 },
+  { id: 'SNK-043', image: 'product-03', name: 'Slip-on canvas', price: '₦35,000', forks: 4 },
 ]
 
 const tabLabels = ['Products', 'Pricing rules', 'Forks', 'Activity']

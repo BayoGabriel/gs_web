@@ -28,7 +28,7 @@ function depth(forks: number): 1 | 2 | 3 {
 }
 
 export function RepoCard({ repo, action, className }: RepoCardProps) {
-  const currency = repo.currency ?? 'USD'
+  const currency = repo.currency ?? 'NGN'
   const isPrivate = repo.state === 'private'
 
   return (

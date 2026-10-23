@@ -21,7 +21,7 @@ function computeSplit(wholesale: number, type: 'amount' | 'percent', value: numb
 /** Segmented amount/percent markup editor with a live selling-price preview. */
 export function MarkupEditor({
   wholesale,
-  currency = 'USD',
+  currency = 'NGN',
   minMarkup = 0,
   maxMarkup,
   className,
@@ -66,7 +66,7 @@ export function MarkupEditor({
         value={raw}
         onChange={(event) => setRaw(event.target.value)}
         inputMode="decimal"
-        prefix={type === 'amount' ? '$' : undefined}
+        prefix={type === 'amount' ? '₦' : undefined}
         suffix={type === 'percent' ? '%' : undefined}
         error={error}
         className="mt-4 max-w-64"

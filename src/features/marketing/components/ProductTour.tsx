@@ -33,7 +33,7 @@ export function ProductTour() {
           label: 'Wallet',
           content: (
             <div className="max-w-md">
-              <WalletCard balance={48250} pending={12000} todayDelta={1200} />
+              <WalletCard balance={48250000} pending={12000000} todayDelta={1200000} />
             </div>
           ),
         },

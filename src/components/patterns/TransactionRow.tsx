@@ -35,7 +35,7 @@ const statusLabel: Record<StatusKind, string> = {
 
 export function TransactionRow({ tx }: { tx: Transaction }) {
   const Icon = typeIcons[tx.type]
-  const currency = tx.currency ?? 'USD'
+  const currency = tx.currency ?? 'NGN'
   const sign = tx.amount < 0 ? '−' : '+'
 
   return (

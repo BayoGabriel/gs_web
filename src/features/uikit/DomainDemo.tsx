@@ -15,7 +15,7 @@ export function DomainDemo() {
       <KitBlock id="cards" title="Cards and stacks">
         <div className="grid max-w-3xl gap-8 sm:grid-cols-2">
           <RepoCard
-            repo={{ id: 'k1', title: 'Sneakers 2026', wholesaler: 'Swift Footwear', items: 24, avgWholesale: 4000, forkCount: 12 }}
+            repo={{ id: 'k1', title: 'Sneakers 2026', wholesaler: 'Swift Footwear', items: 24, avgWholesale: 4000000, forkCount: 12 }}
           />
           <Card variant="inverted">
             <p className="text-sm">Inverted card — used for emphasis blocks and closing CTAs.</p>
@@ -25,10 +25,10 @@ export function DomainDemo() {
       <KitBlock id="money" title="Wallet, transactions, timeline">
         <div className="grid max-w-4xl gap-8 lg:grid-cols-2">
           <div>
-            <WalletCard balance={48250} pending={12000} todayDelta={1200} />
+            <WalletCard balance={48250000} pending={12000000} todayDelta={1200000} />
             <ul className="mt-4 rounded-xl border border-border bg-raised px-4">
-              <TransactionRow tx={{ id: 't1', type: 'markup', title: 'Markup earned', counterparty: 'amara.gitshop.co', reference: 'TXN-8f41', timestamp: '14:32', status: 'completed', amount: 1200 }} />
-              <TransactionRow tx={{ id: 't2', type: 'payout', title: 'Payout', counterparty: 'Bank ••••4821', reference: 'PO-1139', timestamp: 'Yesterday', status: 'pending', amount: -15000 }} />
+              <TransactionRow tx={{ id: 't1', type: 'markup', title: 'Markup earned', counterparty: 'amara.gitshop.co', reference: 'TXN-8f41', timestamp: '14:32', status: 'completed', amount: 1500000 }} />
+              <TransactionRow tx={{ id: 't2', type: 'payout', title: 'Payout', counterparty: 'Bank ••••4821', reference: 'PO-1139', timestamp: 'Yesterday', status: 'pending', amount: -18500000 }} />
             </ul>
           </div>
           <Card>
@@ -44,7 +44,7 @@ export function DomainDemo() {
       </KitBlock>
       <KitBlock id="markup" title="Markup editor">
         <Card className="max-w-xl">
-          <MarkupEditor wholesale={4000} minMarkup={500} maxMarkup={20000} />
+          <MarkupEditor wholesale={4000000} minMarkup={500000} maxMarkup={20000000} />
         </Card>
       </KitBlock>
       <KitBlock id="table" title="Table and empty state">
@@ -56,8 +56,8 @@ export function DomainDemo() {
             { key: 'price', header: 'Wholesale', numeric: true },
           ]}
           rows={[
-            { key: '1', cells: { sku: 'SNK-041', name: 'Low-top trainer', price: formatMoney(4000) } },
-            { key: '2', cells: { sku: 'SNK-042', name: 'Court runner', price: formatMoney(5500) } },
+            { key: '1', cells: { sku: 'SNK-041', name: 'Low-top trainer', price: formatMoney(4000000) } },
+            { key: '2', cells: { sku: 'SNK-042', name: 'Court runner', price: formatMoney(5500000) } },
           ]}
         />
         <EmptyState

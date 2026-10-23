@@ -33,7 +33,7 @@ export default function RepoManagementPage() {
         </div>
       </section>
       <DetailSection {...importSec} tone="surface" />
-      <DetailSection {...rulesSec} imageFirst media={<div className="stack max-w-md p-6"><p className="font-mono text-sm">min price $45.00 · max margin 40%</p><p className="caption mt-2 text-subtle">Example pricing rule</p></div>} />
+      <DetailSection {...rulesSec} imageFirst media={<div className="stack max-w-md p-6"><p className="font-mono text-sm">min price ₦55,000 · max margin 40%</p><p className="caption mt-2 text-subtle">Example pricing rule</p></div>} />
       <DetailSection {...accessSec} tone="surface" image="wholesaler-section" />
       <DetailSection {...inventorySec} imageFirst media={<div className="stack max-w-md p-6"><p className="font-mono text-sm">SNK-041 · 36 in stock</p><p className="font-mono text-sm">SNK-042 · 12 in stock</p><p className="caption mt-2 text-subtle">Example inventory</p></div>} />
       <DetailSection {...changesSec} tone="surface" media={<ChangelogMockup />} />
@@ -59,7 +59,7 @@ export default function RepoManagementPage() {
 
 function ChangelogMockup() {
   const rows = [
-    { id: 'c1', text: 'SNK-042 price $55.00 → $52.00', when: '2h ago' },
+    { id: 'c1', text: 'SNK-042 price ₦58,000 → ₦55,000', when: '2h ago' },
     { id: 'c2', text: '3 products added to “Denim staples”', when: 'Yesterday' },
     { id: 'c3', text: 'SNK-041 stock 36 → 41', when: '2 days ago' },
   ]

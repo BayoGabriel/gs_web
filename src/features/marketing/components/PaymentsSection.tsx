@@ -5,8 +5,8 @@ import { WalletCard } from '../../../components/patterns/WalletCard'
 import { payments } from '../../../content/home'
 
 const exampleTx: Transaction[] = [
-  { id: 't1', type: 'markup', title: 'Earnings', counterparty: 'Order #2417', reference: 'TXN-8f41', timestamp: 'Today', status: 'completed', amount: 1200 },
-  { id: 't2', type: 'payout', title: 'Payout', counterparty: 'Bank account', reference: 'PO-1139', timestamp: 'Yesterday', status: 'pending', amount: -15000 },
+  { id: 't1', type: 'markup', title: 'Earnings', counterparty: 'Order #2417', reference: 'TXN-8f41', timestamp: 'Today', status: 'completed', amount: 1500000 },
+  { id: 't2', type: 'payout', title: 'Payout', counterparty: 'Bank account', reference: 'PO-1139', timestamp: 'Yesterday', status: 'pending', amount: -18500000 },
 ]
 
 export function PaymentsSection() {
@@ -35,7 +35,7 @@ export function PaymentsSection() {
           </ul>
         </div>
         <div>
-          <WalletCard balance={48250} pending={12000} todayDelta={1200} />
+          <WalletCard balance={48250000} pending={12000000} todayDelta={1200000} />
           <ul className="mt-6 rounded-xl border border-border bg-raised px-4" aria-label="Example transactions">
             {exampleTx.map((tx) => (
               <TransactionRow key={tx.id} tx={tx} />

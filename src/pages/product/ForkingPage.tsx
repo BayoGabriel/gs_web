@@ -21,13 +21,13 @@ export default function ForkingPage() {
       />
       <DetailSection {...browse} tone="surface" media={
         <div className="grid max-w-md gap-4 sm:grid-cols-2">
-          <RepoCard repo={{ id: 'a', title: 'Sneakers 2026', wholesaler: 'Swift Footwear', items: 24, avgWholesale: 4000, forkCount: 12 }} />
-          <RepoCard repo={{ id: 'b', title: 'Denim staples', wholesaler: 'Kano Textiles', items: 18, avgWholesale: 2600, forkCount: 4 }} />
+          <RepoCard repo={{ id: 'a', title: 'Sneakers 2026', wholesaler: 'Swift Footwear', items: 24, avgWholesale: 4000000, forkCount: 12 }} />
+          <RepoCard repo={{ id: 'b', title: 'Denim staples', wholesaler: 'Kano Textiles', items: 18, avgWholesale: 2600000, forkCount: 4 }} />
         </div>
       } />
       <DetailSection {...oneStep} imageFirst image="step-2" />
       <DetailSection {...prices} tone="surface" media={
-        <Card className="max-w-md"><MarkupEditor wholesale={4000} minMarkup={500} maxMarkup={20000} /></Card>
+        <Card className="max-w-md"><MarkupEditor wholesale={4000000} minMarkup={500000} maxMarkup={20000000} /></Card>
       } />
       <DetailSection {...several} imageFirst image="usecase-dropship" />
       <DetailSection {...updates} tone="surface" image="step-4" />

@@ -35,7 +35,7 @@ export function OverlaysDemo() {
             description="Confirm the amount and destination."
             trigger={<Button variant="secondary">Open modal</Button>}
           >
-            <p className="text-sm text-muted">$150.00 to Bank account ••••4821</p>
+            <p className="text-sm text-muted">₦185,000 to Bank account ••••4821</p>
           </Modal>
           <Modal
             sheet
