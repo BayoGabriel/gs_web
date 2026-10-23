@@ -8,7 +8,7 @@ import { orderRouting } from '../../content/product'
 import { OrderTrackingMockup } from '../../features/storefront/OrderTrackingMockup'
 import { useDocumentMeta } from '../../hooks/useDocumentMeta'
 
-const [journey, supplierView, sellerView, customerView, status, refunds] = orderRouting.sections
+const [journey, supplierView, , customerView, status, refunds] = orderRouting.sections
 
 export default function OrderRoutingPage() {
   useDocumentMeta('Order routing', 'The customer pays. The supplier gets a paid, complete order. You do nothing.')
@@ -33,7 +33,7 @@ export default function OrderRoutingPage() {
         </div>
       } />
       <DetailSection {...supplierView} tone="surface" imageFirst image="wholesaler-section" />
-      <DetailSection {...sellerView} image="seller-section" />
+      {/* <DetailSection {...sellerView} image="seller-section" /> */}
       <DetailSection {...customerView} tone="surface" imageFirst media={
         <DeviceFrame kind="phone" className="mx-auto w-full max-w-xs"><OrderTrackingMockup /></DeviceFrame>
       } />

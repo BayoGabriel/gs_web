@@ -32,7 +32,7 @@ export function Photo({ slot, className, priority, decorative, sizes }: PhotoPro
         'block object-cover',
         !callerSize && 'h-auto w-full',
         !callerRadius && 'rounded-xl',
-        meta.treatment !== 'product' && 'grayscale-[1] contrast-[1.05]',
+        meta.treatment !== 'product' && 'photo-edit grayscale-[1] contrast-[1.05]',
         className,
       )}
       style={callerSize ? undefined : { aspectRatio: `${w}/${h}` }}

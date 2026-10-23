@@ -49,6 +49,27 @@ video {
   }
 }
 
+/* Theme cross-fade: applied on <html> only for ~450ms during a theme switch,
+   so surfaces, text and borders glide instead of snapping. */
+html.gs-theme-anim,
+html.gs-theme-anim *,
+html.gs-theme-anim *::before,
+html.gs-theme-anim *::after {
+  transition:
+    background-color var(--dur-slow) var(--ease-standard),
+    border-color var(--dur-slow) var(--ease-standard),
+    color var(--dur-slow) var(--ease-standard),
+    fill var(--dur-slow) var(--ease-standard),
+    stroke var(--dur-slow) var(--ease-standard),
+    box-shadow var(--dur-slow) var(--ease-standard),
+    filter var(--dur-slow) var(--ease-standard) !important;
+}
+
+/* Dark-mode editorial photos: slightly softer so greys don't glow on black. */
+html[data-theme='dark'] img.photo-edit {
+  filter: grayscale(1) contrast(1.02) brightness(0.92);
+}
+
 /* Skip layout/paint for off-screen sections; size is remembered after first render. */
 .cv-auto {
   content-visibility: auto;

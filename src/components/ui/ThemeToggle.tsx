@@ -1,30 +1,31 @@
-import { Monitor, Moon, Sun } from 'lucide-react'
+import * as SwitchPrimitive from '@radix-ui/react-switch'
+import { Moon, Sun } from 'lucide-react'
 import { useTheme } from '../../hooks/useTheme'
-import type { ThemeMode } from '../../lib/theme'
 
-const order: ThemeMode[] = ['system', 'light', 'dark']
-const icons = { system: Monitor, light: Sun, dark: Moon }
-const labels = { system: 'System', light: 'Light', dark: 'Dark' }
-
-/** Cycles system → light → dark. Persists the choice. */
+/**
+ * Light/dark switch. The site defaults to the system theme; the switch
+ * flips it to an explicit choice (there is no visible "system" option).
+ */
 export function ThemeToggle({ className }: { className?: string }) {
-  const { mode, setMode } = useTheme()
-  const next = order[(order.indexOf(mode) + 1) % order.length]
-  const Icon = icons[mode]
+  const { resolved, setMode } = useTheme()
+  const dark = resolved === 'dark'
 
   return (
-    <button
-      type="button"
-      onClick={() => setMode(next)}
-      aria-label={`Theme: ${labels[mode]}. Activate to switch to ${labels[next]}.`}
+    <div
       className={
-        'inline-flex h-[var(--control-md)] items-center gap-2 rounded-md px-3 text-sm ' +
-        'font-semibold text-text hover:bg-hover-surface active:bg-pressed-surface ' +
-        'transition-colors duration-fast ' + (className ?? '')
+        'flex h-[var(--control-md)] items-center gap-2 text-muted ' + (className ?? '')
       }
     >
-      <Icon className="h-4 w-4" aria-hidden="true" />
-      <span>{labels[mode]}</span>
-    </button>
+      <Sun className="h-4 w-4" aria-hidden="true" />
+      <SwitchPrimitive.Root
+        checked={dark}
+        onCheckedChange={(checked) => setMode(checked ? 'dark' : 'light')}
+        aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
+        className="relative h-6 w-11 shrink-0 rounded-full border border-border-strong bg-surface transition-colors duration-fast data-[state=checked]:border-primary data-[state=checked]:bg-primary"
+      >
+        <SwitchPrimitive.Thumb className="block h-4 w-4 translate-x-1 rounded-full bg-text transition-transform duration-base data-[state=checked]:translate-x-6 data-[state=checked]:bg-on-primary" />
+      </SwitchPrimitive.Root>
+      <Moon className="h-4 w-4" aria-hidden="true" />
+    </div>
   )
 }

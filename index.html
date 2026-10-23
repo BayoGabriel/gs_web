@@ -45,21 +45,25 @@
           background: #fff; color: #000;
         }
         html[data-theme='dark'] #gs-splash { background: #000; color: #fff }
+        #gs-splash rect { stroke: #fff; stroke-width: 5; }
+        html[data-theme='dark'] #gs-splash rect { stroke: #000; }
+        /* The three squares collapse onto each other, then fan back out —
+           the logo assembling itself while the app loads. */
+        @media (prefers-reduced-motion: no-preference) {
+          #gs-splash .sp-layer { animation: gs-stack 2s cubic-bezier(.2, 0, 0, 1) infinite; }
+          #gs-splash .sp-mid { animation-delay: .12s; }
+          #gs-splash .sp-back { animation-delay: .24s; }
+        }
+        @keyframes gs-stack {
+          0%, 12% { transform: translate(var(--gs-ov), var(--gs-ov)); }
+          55%, 72% { transform: translate(0, 0); }
+          100% { transform: translate(var(--gs-ov), var(--gs-ov)); }
+        }
       </style>
       <div id="gs-splash" aria-hidden="true">
         <svg viewBox="0 0 64 64" width="56" height="56" fill="currentColor" aria-hidden="true">
-          <defs>
-            <mask id="sp-a" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
-              <rect width="64" height="64" fill="#fff" />
-              <rect x="15" y="15" width="34" height="34" rx="9" fill="#000" stroke="#000" stroke-width="7" />
-            </mask>
-            <mask id="sp-b" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
-              <rect width="64" height="64" fill="#fff" />
-              <rect x="25" y="25" width="34" height="34" rx="9" fill="#000" stroke="#000" stroke-width="7" />
-            </mask>
-          </defs>
-          <rect x="5" y="5" width="34" height="34" rx="9" mask="url(#sp-a)" />
-          <rect x="15" y="15" width="34" height="34" rx="9" mask="url(#sp-b)" />
+          <rect class="sp-layer sp-back" style="--gs-ov: 20px" x="5" y="5" width="34" height="34" rx="9" />
+          <rect class="sp-layer sp-mid" style="--gs-ov: 10px" x="15" y="15" width="34" height="34" rx="9" />
           <rect x="25" y="25" width="34" height="34" rx="9" />
         </svg>
       </div>

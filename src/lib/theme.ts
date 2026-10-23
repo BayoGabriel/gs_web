@@ -19,8 +19,14 @@ export function resolveTheme(mode: ThemeMode): ResolvedTheme {
   return mode
 }
 
+let themeAnimTimer: number | undefined
+
 export function applyTheme(mode: ThemeMode) {
-  document.documentElement.dataset.theme = resolveTheme(mode)
+  const root = document.documentElement
+  root.classList.add('gs-theme-anim')
+  root.dataset.theme = resolveTheme(mode)
+  clearTimeout(themeAnimTimer)
+  themeAnimTimer = window.setTimeout(() => root.classList.remove('gs-theme-anim'), 450)
 }
 
 export function setThemeMode(mode: ThemeMode) {
