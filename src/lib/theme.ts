@@ -1,0 +1,41 @@
+export type ThemeMode = 'light' | 'dark' | 'system'
+export type ResolvedTheme = 'light' | 'dark'
+
+const STORAGE_KEY = 'gitshop-theme'
+
+const darkQuery = () => window.matchMedia('(prefers-color-scheme: dark)')
+
+export function getThemeMode(): ThemeMode {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY)
+    return stored === 'light' || stored === 'dark' ? stored : 'system'
+  } catch {
+    return 'system'
+  }
+}
+
+export function resolveTheme(mode: ThemeMode): ResolvedTheme {
+  if (mode === 'system') return darkQuery().matches ? 'dark' : 'light'
+  return mode
+}
+
+export function applyTheme(mode: ThemeMode) {
+  document.documentElement.dataset.theme = resolveTheme(mode)
+}
+
+export function setThemeMode(mode: ThemeMode) {
+  try {
+    if (mode === 'system') localStorage.removeItem(STORAGE_KEY)
+    else localStorage.setItem(STORAGE_KEY, mode)
+  } catch {
+    /* storage unavailable — theme still applies for this session */
+  }
+  applyTheme(mode)
+}
+
+/** Subscribe to OS theme changes; used while mode is 'system'. */
+export function onSystemThemeChange(listener: () => void): () => void {
+  const query = darkQuery()
+  query.addEventListener('change', listener)
+  return () => query.removeEventListener('change', listener)
+}

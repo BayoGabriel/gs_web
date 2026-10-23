@@ -1,0 +1,158 @@
+/* The Stack: layered depth from the logo. Replaces shadows.
+   See docs/components.md section 1 and docs/implementation.md. */
+
+.stack {
+  --step: var(--stack-step-md);
+  position: relative;
+  isolation: isolate;
+  margin-top: calc(var(--step) * 2);
+  margin-left: calc(var(--step) * 2);
+  border-radius: var(--radius-xl);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  box-shadow: 0 0 0 var(--stack-gap) var(--bg);
+  transition: transform var(--dur-base) var(--ease-decelerate);
+}
+
+.stack::before,
+.stack::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--inverse-bg);
+  z-index: -1;
+  pointer-events: none;
+  transition: transform var(--dur-base) var(--ease-decelerate);
+}
+.stack::before {
+  transform: translate(calc(var(--step) * -1), calc(var(--step) * -1));
+  box-shadow: 0 0 0 var(--stack-gap) var(--bg);
+}
+.stack::after {
+  transform: translate(calc(var(--step) * -2), calc(var(--step) * -2));
+  z-index: -2;
+}
+
+.stack[data-depth='1']::before,
+.stack[data-depth='1']::after {
+  display: none;
+}
+.stack[data-depth='2']::after {
+  display: none;
+}
+
+.stack[data-variant='inverted'] {
+  background: var(--primary);
+  color: var(--on-primary);
+  border-color: transparent;
+}
+
+.stack--sm {
+  --step: var(--stack-step-sm);
+}
+.stack--lg {
+  --step: var(--stack-step-lg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .stack[data-fan]:hover::before {
+    transform: translate(
+      calc(var(--step) * -1 - 4px),
+      calc(var(--step) * -1 - 4px)
+    );
+  }
+  .stack[data-fan]:hover::after {
+    transform: translate(
+      calc(var(--step) * -2 - 8px),
+      calc(var(--step) * -2 - 8px)
+    );
+  }
+}
+
+/* Stack-assemble: three squares slide in from the lower-right, once. */
+@keyframes stack-assemble {
+  from {
+    opacity: 0;
+    transform: translate(var(--assemble-from, 24px), var(--assemble-from, 24px));
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stack-assemble {
+    animation: stack-assemble var(--dur-slower) var(--ease-decelerate) both;
+  }
+  .stack-assemble-1 {
+    animation-delay: 0ms;
+  }
+  .stack-assemble-2 {
+    animation-delay: 120ms;
+  }
+  .stack-assemble-3 {
+    animation-delay: 240ms;
+  }
+}
+
+/* Marquee: constant scroll, paused via animation-play-state. */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track {
+    animation: marquee-scroll 30s linear infinite;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+  }
+}
+
+/* Floating hero cards appear in sequence, once. */
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--stack-step-sm));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .float-in {
+    animation: float-in var(--dur-slow) var(--ease-decelerate) both;
+  }
+  .float-in-1 { animation-delay: 600ms; }
+  .float-in-2 { animation-delay: 900ms; }
+  .float-in-3 { animation-delay: 1200ms; }
+}
+
+/* Skeleton shimmer (disabled under reduced motion by token durations). */
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+.skeleton {
+  background: var(--surface);
+  animation: skeleton-pulse 1.4s var(--ease-standard) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}

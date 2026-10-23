@@ -1,45 +1,67 @@
-import { EARLY_ACCESS_HREF, navItems } from '../../features/landing/content/navigation'
-import { Wordmark } from '../ui/Logo'
+import { AtSign, Globe, Hash, Share2 } from 'lucide-react'
+import { Link } from 'react-router'
+import { footerGroups, tagline } from '../../content/nav'
+import { Logo } from '../brand/Logo'
+import { NewsletterForm } from '../ui/NewsletterForm'
+import { ThemeToggle } from '../ui/ThemeToggle'
+
+const socials = [
+  { id: 'x', label: 'X (Twitter) — placeholder', Icon: AtSign },
+  { id: 'instagram', label: 'Instagram — placeholder', Icon: Share2 },
+  { id: 'linkedin', label: 'LinkedIn — placeholder', Icon: Globe },
+  { id: 'github', label: 'GitHub — placeholder', Icon: Hash },
+]
 
 export function SiteFooter() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-border bg-paper">
-      <div className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8">
-        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
-          <div className="max-w-sm">
-            <Wordmark />
-            <p className="mt-4 text-sm leading-relaxed text-muted">
-              A product-distribution platform where suppliers publish catalogues
-              and sellers fork them into their own selling operations.
+    <footer className="border-t border-border bg-surface">
+      <div className="mx-auto w-full max-w-[var(--container)] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,18rem)_1fr]">
+          <div>
+            <Link to="/" aria-label="GitShop home" className="inline-block rounded-sm text-text">
+              <Logo variant="stacked" decorative className="w-24" />
+            </Link>
+            <p className="mt-5 font-display text-lg font-semibold">{tagline}</p>
+            <p className="measure mt-2 text-sm text-muted">
+              Publish a catalogue once. Let anyone sell it from their own store.
             </p>
-          </div>
-          <nav aria-label="Footer navigation">
-            <ul className="flex flex-col gap-3 sm:flex-row sm:gap-8">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="text-sm font-semibold text-ink/80 hover:text-forest focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-forest"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-              <li>
+            <div className="mt-5 flex gap-1" data-placeholder>
+              {socials.map(({ id, label, Icon }) => (
                 <a
-                  href={EARLY_ACCESS_HREF}
-                  className="text-sm font-semibold text-forest hover:text-forest-deep focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-forest"
+                  key={id}
+                  href="#social-placeholder"
+                  aria-label={`${label} (placeholder link)`}
+                  onClick={(e) => e.preventDefault()}
+                  className="flex h-[var(--control-sm)] w-[var(--control-sm)] items-center justify-center rounded-sm text-muted hover:bg-hover-surface hover:text-text"
                 >
-                  Get early access
+                  <Icon className="h-4 w-4" aria-hidden="true" />
                 </a>
-              </li>
-            </ul>
-          </nav>
+              ))}
+            </div>
+            <ThemeToggle className="mt-5" />
+          </div>
+          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+            {footerGroups.map((group) => (
+              <nav key={group.title} aria-label={`${group.title} links`}>
+                <h2 className="caption text-subtle">{group.title}</h2>
+                <ul className="mt-3 space-y-2.5">
+                  {group.links.map((link) => (
+                    <li key={link.to}>
+                      <Link to={link.to} className="text-sm font-semibold text-text hover:text-muted">
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ))}
+            <NewsletterForm />
+          </div>
         </div>
-        <p className="mt-10 border-t border-border pt-6 font-mono text-xs text-muted">
-          © {year} GitShop. Product examples and prices shown are illustrative.
+        <p className="mt-14 border-t border-border pt-6 text-sm text-subtle">
+          © {year} GitShop
         </p>
       </div>
     </footer>

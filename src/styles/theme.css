@@ -1,0 +1,54 @@
+/* Maps semantic tokens into Tailwind so utilities stay token-driven. */
+@theme {
+  /* Remove Tailwind's default px radius scale; the token scale is
+     re-declared as utilities below so `rounded-md` means 12px. */
+  --radius-*: initial;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-raised: var(--surface-raised);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-subtle: var(--text-subtle);
+  --color-disabled: var(--text-disabled);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-danger: var(--danger);
+  --color-on-danger: var(--on-danger);
+  --color-hover-surface: var(--hover-surface);
+  --color-pressed-surface: var(--pressed-surface);
+  --color-disabled-surface: var(--disabled-surface);
+  --color-inverse-bg: var(--inverse-bg);
+  --color-scrim: var(--scrim);
+
+  --font-sans: var(--font-body);
+}
+
+/* Token-driven radius utilities */
+@utility rounded-xs { border-radius: var(--radius-xs); }
+@utility rounded-sm { border-radius: var(--radius-sm); }
+@utility rounded-md { border-radius: var(--radius-md); }
+@utility rounded-lg { border-radius: var(--radius-lg); }
+@utility rounded-xl { border-radius: var(--radius-xl); }
+@utility rounded-full { border-radius: var(--radius-full); }
+@utility rounded-t-xl {
+  border-top-left-radius: var(--radius-xl);
+  border-top-right-radius: var(--radius-xl);
+}
+
+/* Token-driven motion utilities */
+@utility duration-fast { transition-duration: var(--dur-fast); }
+@utility duration-base { transition-duration: var(--dur-base); }
+@utility duration-slow { transition-duration: var(--dur-slow); }
+@utility duration-slower { transition-duration: var(--dur-slower); }
+@utility ease-standard { transition-timing-function: var(--ease-standard); }
+@utility ease-decelerate { transition-timing-function: var(--ease-decelerate); }
+
+/* Typography families */
+@utility font-display { font-family: var(--font-display); }
+@utility font-body { font-family: var(--font-body); }
+@utility font-mono { font-family: var(--font-mono); }

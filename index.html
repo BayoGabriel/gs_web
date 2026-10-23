@@ -2,17 +2,68 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="GitShop helps wholesalers publish product catalogues that retailers and dropshippers can fork, customise with their own pricing, and use as a starting point for selling."
+      content="GitShop is the distribution layer for commerce. Wholesalers publish a managed catalogue; sellers fork it into their own storefront. GitShop runs the orders, the payments and the payouts."
     />
-    <meta name="theme-color" content="#174C3C" />
-    <title>GitShop — A Connected Network for Product Distribution</title>
+    <link rel="preload" as="image" href="/images/hero-photo-1.webp" fetchpriority="high" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GitShop" />
+    <meta property="og:image" content="/og-image-light.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('gitshop-theme')
+          var dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          document.documentElement.dataset.theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : dark
+                ? 'dark'
+                : 'light'
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <title>GitShop — Distribution, made easy.</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <style>
+        #gs-splash {
+          position: fixed; inset: 0; display: grid; place-items: center;
+          background: #fff; color: #000;
+        }
+        html[data-theme='dark'] #gs-splash { background: #000; color: #fff }
+      </style>
+      <div id="gs-splash" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="56" height="56" fill="currentColor" aria-hidden="true">
+          <defs>
+            <mask id="sp-a" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+              <rect width="64" height="64" fill="#fff" />
+              <rect x="15" y="15" width="34" height="34" rx="9" fill="#000" stroke="#000" stroke-width="7" />
+            </mask>
+            <mask id="sp-b" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+              <rect width="64" height="64" fill="#fff" />
+              <rect x="25" y="25" width="34" height="34" rx="9" fill="#000" stroke="#000" stroke-width="7" />
+            </mask>
+          </defs>
+          <rect x="5" y="5" width="34" height="34" rx="9" mask="url(#sp-a)" />
+          <rect x="15" y="15" width="34" height="34" rx="9" mask="url(#sp-b)" />
+          <rect x="25" y="25" width="34" height="34" rx="9" />
+        </svg>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

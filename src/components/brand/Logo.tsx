@@ -1,0 +1,77 @@
+import { useId } from 'react'
+
+type LogoVariant = 'horizontal' | 'stacked' | 'mark'
+
+type LogoProps = {
+  variant?: LogoVariant
+  /** Visually hide when adjacent visible text or a labelled link names GitShop. */
+  decorative?: boolean
+  className?: string
+}
+
+const viewBoxes: Record<LogoVariant, string> = {
+  mark: '0 0 64 64',
+  horizontal: '0 0 754 241',
+  stacked: '0 0 560 445',
+}
+
+/** Official GitShop artwork, inlined with currentColor. Never retype the wordmark. */
+export function Logo({ variant = 'horizontal', decorative, className }: LogoProps) {
+  const uid = useId().replace(/[^a-zA-Z0-9]/g, '')
+  const maskA = `gs-a-${uid}`
+  const maskB = `gs-b-${uid}`
+
+  const markTransform =
+    variant === 'horizontal'
+      ? 'translate(26.1 26.1) scale(2.78)'
+      : 'translate(177.6 24) scale(3.2)'
+
+  return (
+    <svg
+      viewBox={viewBoxes[variant]}
+      role={decorative ? undefined : 'img'}
+      aria-label={decorative ? undefined : 'GitShop'}
+      aria-hidden={decorative ? true : undefined}
+      className={className}
+      focusable="false"
+    >
+      <g transform={variant === 'mark' ? undefined : markTransform}>
+        <defs>
+          <mask id={maskA} maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+            <rect width="64" height="64" fill="#fff" />
+            <rect x="15" y="15" width="34" height="34" rx="9" fill="#000" stroke="#000" strokeWidth="7" />
+          </mask>
+          <mask id={maskB} maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+            <rect width="64" height="64" fill="#fff" />
+            <rect x="25" y="25" width="34" height="34" rx="9" fill="#000" stroke="#000" strokeWidth="7" />
+          </mask>
+        </defs>
+        <g fill="currentColor">
+          <rect x="5" y="5" width="34" height="34" rx="9" mask={`url(#${maskA})`} />
+          <rect x="15" y="15" width="34" height="34" rx="9" mask={`url(#${maskB})`} />
+          <rect x="25" y="25" width="34" height="34" rx="9" />
+        </g>
+      </g>
+      {variant !== 'mark' ? (
+        <g transform={variant === 'horizontal' ? 'translate(234 65)' : 'translate(40 269)'}>
+          <g fill="none" stroke="currentColor" strokeWidth="17">
+            <path d="M81.79 23.32A41.5 41.5 0 1 0 91.5 50H56" />
+            <rect x="110" y="28" width="17" height="72" fill="currentColor" stroke="none" />
+            <circle cx="118.5" cy="9.5" r="9.5" fill="currentColor" stroke="none" />
+            <g transform="translate(149.5 0)">
+              <path d="M0 6V76A15.5 15.5 0 0 0 15.5 91.5H25" />
+              <path d="M-14 36.5H25" />
+            </g>
+          </g>
+          <g fill="none" stroke="currentColor" strokeWidth="8.5">
+            <path transform="translate(189 0)" d="M52 21C48 11 40 5 30 5C18 5 10 13 10 24C10 36 20 40 31 45C42 50 52 55 52 71C52 87 42 95 30 95C17 95 9 88 6 77" />
+            <path transform="translate(259 0)" d="M4.25 0V100M4.25 58C4.25 40 14 32.25 28 32.25C42 32.25 50 40 50 54V100" />
+            <circle cx="361" cy="64" r="31.75" />
+            <path transform="translate(407 0)" d="M4.25 28V136" />
+            <circle cx="443.1" cy="64" r="31.75" />
+          </g>
+        </g>
+      ) : null}
+    </svg>
+  )
+}

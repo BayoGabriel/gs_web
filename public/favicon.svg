@@ -1,8 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <rect width="32" height="32" rx="7" fill="#174C3C"/>
-  <path d="M10 21v-3.5c0-2 1.6-3.5 3.5-3.5H18" fill="none" stroke="#F7F4EC" stroke-width="2.2" stroke-linecap="round"/>
-  <path d="M10 25v-4" fill="none" stroke="#F7F4EC" stroke-width="2.2" stroke-linecap="round"/>
-  <circle cx="10" cy="25" r="2.4" fill="#D5A84B"/>
-  <circle cx="10" cy="11" r="2.4" fill="#F7F4EC"/>
-  <circle cx="21" cy="14" r="2.4" fill="#C96F4A"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="GitShop"><title>GitShop</title><style>.t{fill:#000}.m{fill:#fff}@media (prefers-color-scheme:dark){.t{fill:#fff}.m{fill:#000}}</style><rect width="64" height="64" rx="14" class="t"/><g transform="translate(8 8) scale(.75)"><defs><mask id="gs23a" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><rect x="15" y="15" width="34" height="34" rx="9" fill="#000" stroke="#000" stroke-width="7"/></mask><mask id="gs23b" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><rect x="25" y="25" width="34" height="34" rx="9" fill="#000" stroke="#000" stroke-width="7"/></mask></defs><g fill="#fff" class="m"><rect x="5" y="5" width="34" height="34" rx="9" mask="url(#gs23a)"/><rect x="15" y="15" width="34" height="34" rx="9" mask="url(#gs23b)"/><rect x="25" y="25" width="34" height="34" rx="9"/></g></g></svg>

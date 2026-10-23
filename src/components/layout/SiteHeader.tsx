@@ -1,56 +1,74 @@
-import { EARLY_ACCESS_HREF, navItems } from '../../features/landing/content/navigation'
-import { useMobileNavigation } from '../../features/landing/hooks/useMobileNavigation'
-import { Button } from '../ui/Button'
-import { Icon } from '../ui/Icon'
-import { Wordmark } from '../ui/Logo'
-import { MobileNavigation } from './MobileNavigation'
+import { lazy, Suspense } from 'react'
+import { Link, NavLink } from 'react-router'
+import { navEntries, primaryCta } from '../../content/nav'
+import { Logo } from '../brand/Logo'
+import { buttonClasses } from '../ui/buttonClasses'
+import { ThemeToggle } from '../ui/ThemeToggle'
+import { MegaMenuItem } from './MegaMenuItem'
+
+// Split Radix dialog/accordion code out of the initial bundle — only fetched
+// on viewports where the hamburger is used.
+const MobileMenu = lazy(() =>
+  import('./MobileMenu').then((m) => ({ default: m.MobileMenu })),
+)
 
 export function SiteHeader() {
-  const { isOpen, close, toggle } = useMobileNavigation()
-
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-paper/90 backdrop-blur-sm">
-      <div className="relative z-50 mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
-        <a
-          href="#top"
-          className="rounded-lg focus-visible:outline-2 focus-visible:outline-forest"
-          aria-label="GitShop home"
-        >
-          <Wordmark />
-        </a>
+    <header className="sticky top-0 z-[var(--z-nav)] border-b border-border bg-bg">
+      <div className="mx-auto flex h-16 w-full max-w-[var(--container)] items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link to="/" aria-label="GitShop home" className="rounded-sm text-text">
+          <Logo variant="horizontal" decorative className="h-7 w-auto sm:h-8" />
+        </Link>
 
-        <nav aria-label="Primary navigation" className="hidden lg:block">
-          <ul className="flex items-center gap-7">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  className="text-[15px] font-semibold text-ink/80 transition-colors hover:text-forest focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-forest"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
+        <nav aria-label="Primary" className="hidden lg:block">
+          <ul className="flex items-center gap-1">
+            {navEntries.map((entry) =>
+              entry.type === 'menu' ? (
+                <MegaMenuItem key={entry.label} label={entry.label} items={entry.items} />
+              ) : (
+                <li key={entry.to}>
+                  <NavLink
+                    to={entry.to}
+                    className={({ isActive }) =>
+                      'flex h-10 items-center rounded-md px-3 text-sm font-semibold transition-colors duration-fast hover:bg-hover-surface ' +
+                      (isActive ? 'text-text' : 'text-muted')
+                    }
+                  >
+                    {entry.label}
+                  </NavLink>
+                </li>
+              ),
+            )}
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
-          <Button href={EARLY_ACCESS_HREF} className="hidden h-11 px-5 sm:inline-flex">
-            Get early access
-          </Button>
-          <button
-            type="button"
-            onClick={toggle}
-            aria-expanded={isOpen}
-            aria-controls="mobile-navigation"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface text-ink hover:border-forest focus-visible:outline-2 focus-visible:outline-forest lg:hidden"
+        <div className="flex items-center gap-2">
+          <ThemeToggle className="hidden xl:inline-flex" />
+          <Link
+            to="/signin"
+            className={buttonClasses({
+              variant: 'ghost',
+              size: 'sm',
+              className: 'hidden lg:inline-flex',
+            })}
           >
-            <Icon name={isOpen ? 'close' : 'menu'} className="h-5 w-5" />
-          </button>
+            Sign in
+          </Link>
+          <Link
+            to={primaryCta.to}
+            className={buttonClasses({ size: 'sm', className: 'hidden sm:inline-flex' })}
+          >
+            {primaryCta.label}
+          </Link>
+          <Suspense
+            fallback={
+              <span className="block h-[var(--control-md)] w-[var(--control-md)] lg:hidden" aria-hidden="true" />
+            }
+          >
+            <MobileMenu />
+          </Suspense>
         </div>
       </div>
-      <MobileNavigation isOpen={isOpen} onClose={close} />
     </header>
   )
 }

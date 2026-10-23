@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://gitshop.app/</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://gitshop.app/product</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/product/repo-management</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/product/forking</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/product/storefronts</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/product/wallet</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/product/order-routing</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/sellers</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/wholesalers</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/use-cases</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/pricing</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/security</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/blog</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://gitshop.app/guides</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/docs</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/help</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://gitshop.app/about</loc><changefreq>yearly</changefreq></url>
+  <url><loc>https://gitshop.app/contact</loc><changefreq>yearly</changefreq></url>
+  <url><loc>https://gitshop.app/signup</loc><changefreq>yearly</changefreq></url>
+  <url><loc>https://gitshop.app/privacy</loc><changefreq>yearly</changefreq></url>
+  <url><loc>https://gitshop.app/terms</loc><changefreq>yearly</changefreq></url>
+  <url><loc>https://gitshop.app/accessibility</loc><changefreq>yearly</changefreq></url>
+</urlset>
