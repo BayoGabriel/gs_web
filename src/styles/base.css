@@ -144,22 +144,54 @@ html[data-theme='dark'] img.photo-edit {
   }
 }
 
-/* Living stacks: the knock-out layers breathe and drift like the preloader. */
+/* WaveText: a scale pulse travels through each letter, then rests. */
+.wave-char {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .wave-in .wave-char {
+    animation: wave-char 6s var(--ease-decelerate) infinite;
+    animation-delay: calc(0.8s + var(--wave-d, 0ms));
+  }
+}
+@keyframes wave-char {
+  0%,
+  12%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  4% {
+    transform: translateY(-0.08em) scale(1.16);
+  }
+  8% {
+    transform: translateY(0) scale(0.97);
+  }
+}
+
+/* Living stacks: the knock-out layers breathe and drift like the preloader.
+   --sl is the layer multiplier (1 = first layer, 2 = second) so the drift
+   moves around the layer's offset instead of snapping it back to origin. */
+.stack::before { --sl: 1; }
+.stack::after { --sl: 2; }
 @keyframes stack-drift {
   0%,
   100% {
-    transform: translate(0, 0);
+    transform: translate(
+      calc(var(--step, var(--stack-step-md)) * -1 * var(--sl, 0)),
+      calc(var(--step, var(--stack-step-md)) * -1 * var(--sl, 0))
+    );
   }
   50% {
     transform: translate(
-      calc(var(--stack-drift, 4px) * -1),
-      calc(var(--stack-drift, 4px) * -1)
+      calc(var(--step, var(--stack-step-md)) * -1 * var(--sl, 0) - var(--stack-drift, 4px)),
+      calc(var(--step, var(--stack-step-md)) * -1 * var(--sl, 0) - var(--stack-drift, 4px))
     );
   }
 }
 @media (prefers-reduced-motion: no-preference) {
   .ps-layer {
-    animation: stack-drift 7s var(--ease-standard) infinite;
+    animation: ps-drift 7s var(--ease-standard) infinite;
     animation-delay: calc(var(--ps-i, 0) * 600ms);
     will-change: transform;
   }
@@ -173,6 +205,19 @@ html[data-theme='dark'] img.photo-edit {
     animation-delay: 500ms, 500ms;
   }
 }
+/* PhotoStack layers drift ±4px around their absolute offset. */
+@keyframes ps-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(
+      calc(var(--stack-drift, 4px) * -1),
+      calc(var(--stack-drift, 4px) * -1)
+    );
+  }
+}
 /* The shadow layers slowly breathe through the grey ramp — subtle shimmer. */
 @keyframes stack-tint {
   0%,
@@ -184,29 +229,76 @@ html[data-theme='dark'] img.photo-edit {
   }
 }
 
+/* Stack on an inverted (dark) section: knockout gap and layers flip. */
+.stack-inverted {
+  box-shadow: 0 0 0 var(--stack-gap) var(--primary);
+}
+.stack-inverted::before,
+.stack-inverted::after {
+  background: var(--bg);
+}
+.stack-inverted::before {
+  box-shadow: 0 0 0 var(--stack-gap) var(--primary);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .stack-alive.stack-inverted::before,
+  .stack-alive.stack-inverted::after {
+    animation-name: stack-drift, stack-tint-inverted;
+  }
+}
+@keyframes stack-tint-inverted {
+  0%,
+  100% {
+    background: var(--bg);
+  }
+  50% {
+    background: var(--gs-gray-500);
+  }
+}
+
 /* Flip cards: front/back faces, 3D turn on hover or click. */
 .flip-card {
-  perspective: 900px;
+  perspective: 1200px;
 }
 .flip-inner {
   position: relative;
   height: 100%;
   width: 100%;
+  transform: rotateY(0deg) translateZ(0);
   transform-style: preserve-3d;
-  transition: transform var(--dur-slower) var(--ease-decelerate);
+  will-change: transform;
+  transition: transform 560ms cubic-bezier(0.32, 0.72, 0.22, 1);
 }
 .flip-card:hover .flip-inner,
 .flip-card[data-flipped='true'] .flip-inner,
 .flip-card:focus-visible .flip-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) translateZ(0);
 }
 .flip-face {
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .flip-back {
   transform: rotateY(180deg);
+}
+
+/* RepoShowcase staggered line entrances. */
+@keyframes rs-line {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rs-line {
+    animation: rs-line var(--dur-slower) var(--ease-decelerate) both;
+  }
 }
 
 /* Scroll-in reveal for blocks. */
@@ -220,6 +312,114 @@ html[data-theme='dark'] img.photo-edit {
 .iv-in {
   opacity: 1;
   transform: none;
+}
+
+/* StepArt: the four animated step diagrams. Transform/opacity/stroke only. */
+.step-art .sa-tile,
+.step-art .sa-pop,
+.step-art .sa-check,
+.step-art .sa-dot,
+.step-art .sa-clone,
+.step-art .sa-toast {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* tiles populate in a cascade, hold, then loop */
+  .sa-tile {
+    animation: sa-tile 8s var(--ease-decelerate) infinite;
+    animation-delay: var(--sa-d, 0ms);
+  }
+  .sa-fade {
+    animation: sa-fade 1s var(--ease-decelerate) both;
+    animation-delay: var(--sa-d, 0ms);
+  }
+  .sa-slide {
+    animation: sa-slide-in 8s var(--ease-decelerate) infinite;
+  }
+  .sa-arrow {
+    animation: sa-nudge 1.8s var(--ease-standard) infinite;
+    animation-delay: 2.4s;
+  }
+  .sa-pop {
+    animation: sa-pop 8s var(--ease-decelerate) infinite;
+    animation-delay: var(--sa-d, 0ms);
+  }
+  .sa-clone {
+    animation: sa-clone 8s var(--ease-standard) infinite;
+  }
+  .sa-toast {
+    animation: sa-toast 8s var(--ease-decelerate) infinite;
+    animation-delay: var(--sa-d, 0ms);
+  }
+  .sa-twinkle {
+    animation: sa-twinkle 3.4s var(--ease-standard) infinite;
+    animation-delay: var(--sa-d, 0ms);
+  }
+  .sa-check {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 0;
+    animation: sa-check 6s var(--ease-standard) infinite;
+  }
+  .sa-dot {
+    animation: sa-dot 6s var(--ease-decelerate) infinite;
+    animation-delay: var(--sa-d, 0ms);
+  }
+}
+
+@keyframes sa-tile {
+  0%    { opacity: 0; transform: scale(0.6); }
+  6%    { opacity: 1; transform: scale(1.06); }
+  9%    { transform: scale(1); }
+  86%   { opacity: 1; transform: scale(1); }
+  94%   { opacity: 0; }
+  100%  { opacity: 0; transform: scale(0.6); }
+}
+@keyframes sa-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes sa-slide-in {
+  0%, 68% { opacity: 0; transform: translateX(14px); }
+  74%, 92% { opacity: 1; transform: none; }
+  98%, 100% { opacity: 0; transform: translateX(14px); }
+}
+@keyframes sa-nudge {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(4px); }
+}
+@keyframes sa-pop {
+  0%, 30%  { opacity: 0; transform: scale(0.5); }
+  36%      { opacity: 1; transform: scale(1.08); }
+  40%, 90% { opacity: 1; transform: scale(1); }
+  96%, 100% { opacity: 0; transform: scale(0.5); }
+}
+@keyframes sa-clone {
+  0%, 12%  { opacity: 0; transform: translate(-28px, -28px) scale(0.9); }
+  28%      { opacity: 1; }
+  45%, 78% { opacity: 1; transform: translate(0, 0) scale(1); }
+  92%, 100% { opacity: 0; transform: translate(-28px, -28px) scale(0.9); }
+}
+@keyframes sa-toast {
+  0%, 55%  { opacity: 0; transform: translateX(18px); }
+  63%, 90% { opacity: 1; transform: none; }
+  97%, 100% { opacity: 0; transform: translateX(18px); }
+}
+@keyframes sa-twinkle {
+  0%, 100% { opacity: 0.12; }
+  40%      { opacity: 0.9; }
+}
+@keyframes sa-check {
+  0%, 10%  { stroke-dashoffset: 48; }
+  40%, 88% { stroke-dashoffset: 0; }
+  96%, 100% { stroke-dashoffset: 48; }
+}
+@keyframes sa-dot {
+  0%, 8%   { opacity: 0; transform: scale(0.4); }
+  16%      { opacity: 1; transform: scale(1.25); }
+  22%, 88% { opacity: 1; transform: scale(1); }
+  96%, 100% { opacity: 0; transform: scale(0.4); }
 }
 
 @media (prefers-reduced-motion: reduce) {
