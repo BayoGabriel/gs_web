@@ -15,12 +15,15 @@ type WaveTextProps = {
 export function WaveText({ text, className, stagger = 55 }: WaveTextProps) {
   const { ref, inView } = useInView<HTMLSpanElement>(0.6)
   const words = text.split(' ')
-  let offset = 0
+  const starts: number[] = []
+  words.reduce((acc, word, i) => {
+    starts[i] = acc
+    return acc + word.length + 1
+  }, 0)
   return (
     <span ref={ref} className={cn('wave-root', inView && 'wave-in', className)} aria-label={text}>
       {words.map((word, wi) => {
-        const start = offset
-        offset += word.length + 1
+        const start = starts[wi]
         return (
           <span key={wi} aria-hidden="true" style={{ display: 'inline' }}>
             <span className="wave-word">

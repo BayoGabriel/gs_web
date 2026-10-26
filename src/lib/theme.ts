@@ -15,7 +15,8 @@ export function getThemeMode(): ThemeMode {
 }
 
 export function resolveTheme(mode: ThemeMode): ResolvedTheme {
-  if (mode === 'system') return darkQuery().matches ? 'dark' : 'light'
+  if (mode === 'system')
+    return typeof window !== 'undefined' && darkQuery().matches ? 'dark' : 'light'
   return mode
 }
 

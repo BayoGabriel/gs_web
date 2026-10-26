@@ -14,11 +14,22 @@ function upsertMeta(selector: string, attrs: Record<string, string>) {
   Object.entries(attrs).forEach(([key, value]) => el!.setAttribute(key, value))
 }
 
+/** Last meta written during server rendering; read by scripts/prerender.mjs. */
+export const ssrMeta = { title: '', description: '', url: '' }
+
+function recordSsrMeta(title: string, description: string, url: string) {
+  ssrMeta.title = title
+  ssrMeta.description = description
+  ssrMeta.url = url
+}
+
 /** Sets title, description, canonical and OG/Twitter tags per page. */
 export function useDocumentMeta(title: string, description: string) {
   const { pathname } = useLocation()
   const fullTitle = `${title} — GitShop`
   const url = `${SITE_URL}${pathname}`
+
+  if (typeof document === 'undefined') recordSsrMeta(fullTitle, description, url)
 
   useEffect(() => {
     document.title = fullTitle

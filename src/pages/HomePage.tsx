@@ -18,7 +18,7 @@ import { useDocumentMeta } from '../hooks/useDocumentMeta'
 
 export default function HomePage() {
   useDocumentMeta(
-    'GitShop — Distribution, made easy',
+    'Distribution, made easy',
     'Publish a catalogue once. Let anyone sell it from their own store. GitShop runs the orders, the payments and the payouts.',
   )
   return (

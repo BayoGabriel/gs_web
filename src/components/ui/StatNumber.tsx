@@ -4,7 +4,10 @@ import { useEffect, useRef, useState } from 'react'
 export function StatNumber({ value, label }: { value: number; label: string }) {
   const ref = useRef<HTMLParagraphElement>(null)
   const [shown, setShown] = useState(() =>
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches ? value : 0,
+    typeof window === 'undefined' ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? value
+      : 0,
   )
 
   useEffect(() => {
