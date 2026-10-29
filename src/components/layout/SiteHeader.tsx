@@ -54,12 +54,12 @@ export function SiteHeader() {
           >
             Sign in
           </Link>
-          <Link
-            to={primaryCta.to}
+          <a
+            href={primaryCta.to}
             className={buttonClasses({ size: 'sm', className: 'hidden sm:inline-flex' })}
           >
             {primaryCta.label}
-          </Link>
+          </a>
           <Suspense
             fallback={
               <span className="block h-[var(--control-md)] w-[var(--control-md)] lg:hidden" aria-hidden="true" />

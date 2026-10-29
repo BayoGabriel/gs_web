@@ -78,9 +78,9 @@ export function MobileMenu() {
               </Link>
             </DialogPrimitive.Close>
             <DialogPrimitive.Close asChild>
-              <Link to={primaryCta.to} className={buttonClasses({ className: 'w-full' })}>
+              <a href={primaryCta.to} className={buttonClasses({ className: 'w-full' })}>
                 {primaryCta.label}
-              </Link>
+              </a>
             </DialogPrimitive.Close>
             <ThemeToggle className="self-start" />
           </div>

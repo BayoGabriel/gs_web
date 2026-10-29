@@ -1,4 +1,3 @@
-import { Link } from 'react-router'
 import { primaryCta, secondaryCta } from '../../content/nav'
 import { buttonClasses } from '../ui/buttonClasses'
 import { Section } from './Section'
@@ -18,11 +17,11 @@ export function InlineCta({
       <h2 className="display-lg max-w-[18ch]">{title}</h2>
       <p className="body-lg measure mt-5 text-on-primary/75">{sub}</p>
       <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-        <Link to={primaryCta.to} className={buttonClasses({ variant: 'secondary', size: 'lg', className: onDark })}>
+        <a href={primaryCta.to} className={buttonClasses({ variant: 'secondary', size: 'lg', className: onDark })}>
           {primaryCta.label}
-        </Link>
-        <Link
-          to={secondaryCta.to}
+        </a>
+        <a
+          href={secondaryCta.to}
           className={buttonClasses({
             variant: 'secondary',
             size: 'lg',
@@ -30,7 +29,7 @@ export function InlineCta({
           })}
         >
           {secondaryCta.label}
-        </Link>
+        </a>
       </div>
     </Section>
   )

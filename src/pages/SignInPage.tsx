@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from 'react'
-import { Link } from 'react-router'
 import { Section } from '../components/layout/Section'
 import { Button } from '../components/ui/Button'
 import { Input } from '../components/ui/Input'
@@ -46,9 +45,9 @@ export default function SignInPage() {
       <h1 className="h1">Sign in</h1>
       <p className="mt-3 text-sm text-muted">
         New to GitShop?{' '}
-        <Link to="/signup" className="font-semibold underline underline-offset-4">
+        <a href="https://app.gitshop.co/sign-up" className="font-semibold underline underline-offset-4">
           Create an account
-        </Link>
+        </a>
       </p>
       {!authConfigured && (
         <p className="mt-5 rounded-md border border-border bg-raised p-3 text-sm text-muted">

@@ -5,8 +5,8 @@ export type NavEntry =
 
 export const tagline = 'Distribution, made easy.'
 
-export const primaryCta = { label: 'Start selling', to: '/signup?role=seller' }
-export const secondaryCta = { label: 'Publish a catalogue', to: '/signup?role=wholesaler' }
+export const primaryCta = { label: 'Start selling', to: 'https://app.gitshop.co/sign-up?role=seller' }
+export const secondaryCta = { label: 'Publish a catalogue', to: 'https://app.gitshop.co/sign-up?role=wholesaler' }
 
 export const navEntries: NavEntry[] = [
   {
