@@ -24,6 +24,9 @@
     <meta name="twitter:card" content="summary_large_image" />
     <script>
       ;(function () {
+        // Flags JS as available so reveal-on-scroll styles only hide content
+        // when a hydrated observer can actually un-hide it.
+        document.documentElement.classList.add('js')
         try {
           var stored = localStorage.getItem('gitshop-theme')
           var dark = window.matchMedia('(prefers-color-scheme: dark)').matches

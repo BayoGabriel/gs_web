@@ -7,6 +7,7 @@ export const tagline = 'Distribution, made easy.'
 
 export const primaryCta = { label: 'Start selling', to: 'https://app.gitshop.co/sign-up?role=seller' }
 export const secondaryCta = { label: 'Publish a catalogue', to: 'https://app.gitshop.co/sign-up?role=wholesaler' }
+export const signInCta = { label: 'Sign in', to: 'https://app.gitshop.co/sign-in' }
 
 export const navEntries: NavEntry[] = [
   {
@@ -79,7 +80,7 @@ export const footerGroups = [
     links: [
       { label: 'About', to: '/about' },
       { label: 'Contact', to: '/contact' },
-      { label: 'Sign in', to: '/signin' },
+      { label: 'Sign in', to: signInCta.to },
     ],
   },
   {

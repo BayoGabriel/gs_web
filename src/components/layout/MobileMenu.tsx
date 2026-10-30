@@ -1,7 +1,7 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { Link } from 'react-router'
-import { navEntries, primaryCta } from '../../content/nav'
+import { navEntries, primaryCta, signInCta } from '../../content/nav'
 import { cn } from '../../lib/cn'
 import { Logo } from '../brand/Logo'
 import { buttonClasses } from '../ui/buttonClasses'
@@ -73,9 +73,9 @@ export function MobileMenu() {
           </nav>
           <div className="flex flex-col gap-3 pt-4">
             <DialogPrimitive.Close asChild>
-              <Link to="/signin" className={buttonClasses({ variant: 'secondary', className: 'w-full' })}>
-                Sign in
-              </Link>
+              <a href={signInCta.to} className={buttonClasses({ variant: 'secondary', className: 'w-full' })}>
+                {signInCta.label}
+              </a>
             </DialogPrimitive.Close>
             <DialogPrimitive.Close asChild>
               <a href={primaryCta.to} className={buttonClasses({ className: 'w-full' })}>

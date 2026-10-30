@@ -3,12 +3,9 @@ import { useEffect, useRef, useState } from 'react'
 /** Counts up once when it scrolls into view. Static under reduced motion. */
 export function StatNumber({ value, label }: { value: number; label: string }) {
   const ref = useRef<HTMLParagraphElement>(null)
-  const [shown, setShown] = useState(() =>
-    typeof window === 'undefined' ||
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-      ? value
-      : 0,
-  )
+  // Server and client must render the same value on the first pass — starting
+  // at `value` keeps hydration clean; the count-up runs once in view.
+  const [shown, setShown] = useState(value)
 
   useEffect(() => {
     const el = ref.current
@@ -23,6 +20,7 @@ export function StatNumber({ value, label }: { value: number; label: string }) {
           setShown(Math.round(value * (1 - (1 - p) ** 3)))
           if (p < 1) requestAnimationFrame(tick)
         }
+        setShown(0)
         requestAnimationFrame(tick)
       },
       { threshold: 0.4 },

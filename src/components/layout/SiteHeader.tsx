@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Link, NavLink } from 'react-router'
-import { navEntries, primaryCta } from '../../content/nav'
+import { navEntries, primaryCta, signInCta } from '../../content/nav'
 import { Logo } from '../brand/Logo'
 import { buttonClasses } from '../ui/buttonClasses'
 import { ThemeToggle } from '../ui/ThemeToggle'
@@ -44,16 +44,16 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle className="hidden xl:inline-flex" />
-          <Link
-            to="/signin"
+          <a
+            href={signInCta.to}
             className={buttonClasses({
               variant: 'ghost',
               size: 'sm',
               className: 'hidden lg:inline-flex',
             })}
           >
-            Sign in
-          </Link>
+            {signInCta.label}
+          </a>
           <a
             href={primaryCta.to}
             className={buttonClasses({ size: 'sm', className: 'hidden sm:inline-flex' })}

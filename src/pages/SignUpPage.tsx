@@ -1,5 +1,6 @@
 import { Link, useSearchParams } from 'react-router'
 import { Section } from '../components/layout/Section'
+import { signInCta } from '../content/nav'
 import { Photo } from '../components/ui/Photo'
 import { authConfigured } from '../features/auth/authService'
 import { SignUpForm } from '../features/auth/SignUpForm'
@@ -23,7 +24,7 @@ export default function SignUpPage() {
           <h1 className="h1">Create your account</h1>
           <p className="mt-3 text-sm text-muted">
             Already have one?{' '}
-            <Link to="/signin" className="font-semibold underline underline-offset-4">Sign in</Link>
+            <a href={signInCta.to} className="font-semibold underline underline-offset-4">{signInCta.label}</a>
           </p>
           <div className="mt-6 grid grid-cols-2 gap-3" role="group" aria-label="What brings you here">
             {roles.map((item) => (

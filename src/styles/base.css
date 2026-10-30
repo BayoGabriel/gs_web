@@ -86,15 +86,19 @@ html[data-theme='dark'] img.photo-edit {
 }
 .wr-word {
   display: inline-block;
-  transform: translateY(115%);
-  opacity: 0;
   transition:
     transform var(--dur-slower) var(--ease-decelerate),
     opacity var(--dur-slow) var(--ease-decelerate);
   transition-delay: var(--wr-delay, 0ms);
   will-change: transform;
 }
-.wr-in .wr-word {
+/* Hidden start states only apply once JS is running — otherwise the
+   IntersectionObserver can never un-hide content that stays invisible. */
+html.js .wr-word {
+  transform: translateY(115%);
+  opacity: 0;
+}
+html.js .wr-in .wr-word {
   transform: none;
   opacity: 1;
 }
@@ -110,11 +114,13 @@ html[data-theme='dark'] img.photo-edit {
   bottom: -0.04em;
   height: max(2px, 0.045em);
   background: currentColor;
-  transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--dur-slower) var(--ease-decelerate) var(--wr-line-delay, 600ms);
 }
-.wr-in.wr-underline::after {
+html.js .wr-underline::after {
+  transform: scaleX(0);
+}
+html.js .wr-in.wr-underline::after {
   transform: scaleX(1);
 }
 
@@ -307,13 +313,15 @@ html[data-theme='dark'] img.photo-edit {
 
 /* Scroll-in reveal for blocks. */
 .iv {
-  opacity: 0;
-  transform: translateY(18px);
   transition:
     opacity var(--dur-slower) var(--ease-decelerate),
     transform var(--dur-slower) var(--ease-decelerate);
 }
-.iv-in {
+html.js .iv {
+  opacity: 0;
+  transform: translateY(18px);
+}
+html.js .iv-in {
   opacity: 1;
   transform: none;
 }
@@ -427,9 +435,9 @@ html[data-theme='dark'] img.photo-edit {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wr-word,
-  .wr-underline::after,
-  .iv {
+  html.js .wr-word,
+  html.js .wr-underline::after,
+  html.js .iv {
     transform: none;
     opacity: 1;
     transition: none;
